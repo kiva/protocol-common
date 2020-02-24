@@ -1,0 +1,8 @@
+.DS_Store
+.idea
+node_modules
+**/.env*
+**/secret.yaml
+**/*secrets.k8s.yaml
+**/logs/postgres/**.log
+*.log

@@ -1,0 +1,57 @@
+{
+  "name": "@kiva/protocol-common",
+  "version": "0.0.3",
+  "description": "Common code for protocol webservices",
+  "license": "none",
+  "homepage": "https://github.com/kiva/protocol-common#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kiva/protocol-common.git",
+    "directory": "src"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prestart:prod": "rimraf dist && tsc",
+    "lint": "tslint -p tsconfig.json -c tslint.json",
+    "lint:fix": "tslint -p tsconfig.json -c tslint.json --fix",
+    "test": "node -r dotenv/config node_modules/.bin/jest --runInBand",
+    "setup": "npm link"
+  },
+  "dependencies": {
+    "@nestjs/common": "^6.5.3",
+    "@nestjs/core": "^6.5.3",
+    "@nestjs/platform-express": "^6.5.3",
+    "axios": "^0.19.0",
+    "cls-hooked": "4.2.2",
+    "dd-trace": "^0.15.3",
+    "dotenv": "^6.2.0",
+    "express-opentracing": "^0.1.1",
+    "jaeger-client": "^3.17.0",
+    "opentracing": "^0.14.4",
+    "pg": "^7.12.0",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^6.5.3",
+    "typescript": "^3.5.3",
+    "winston-loggly-bulk": "^3.0.1"
+  },
+  "jest": {
+    "globals": {
+      "factories": {}
+    },
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "test",
+    "testRegex": ".e2e-spec.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  }
+}
