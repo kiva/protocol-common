@@ -2,14 +2,10 @@
     "compilerOptions": {
       "module": "commonjs",
       "declaration": true,
-      "noImplicitAny": false,
-      "removeComments": true,
-      "noLib": false,
-      "allowSyntheticDefaultImports": true,
-      "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
-      "target": "es6",
-      "sourceMap": true,
+      "target": "es5",
+      "lib": ["es2017", "es7", "es6", "dom"],
+      "strict": true,
       "outDir": "./dist",
       "baseUrl": "./src"
     },
