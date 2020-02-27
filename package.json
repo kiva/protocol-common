@@ -1,6 +1,6 @@
 {
   "name": "@kiva/protocol-common",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Common code for protocol webservices",
   "license": "none",
   "homepage": "https://github.com/kiva/protocol-common#readme",
@@ -18,8 +18,7 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
-    "build": "tsc",
-    "prestart:prod": "rm -rf dist && tsc",
+    "build": "rm -rf dist && tsc",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "lint:fix": "tslint -p tsconfig.json -c tslint.json --fix",
     "test": "node -r dotenv/config node_modules/.bin/jest --runInBand",
