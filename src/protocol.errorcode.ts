@@ -12,4 +12,5 @@ export enum ProtocolErrorCode {
     REGISTRY_CONNECTION_ERROR = 'RegistryConnectionError',
     MISSING_REQUEST_ID = 'MissingRequestId',
     VALIDATION_EXCEPTION = 'ValidationException',
+    DUPLICATE_ENTRY = 'DuplicateEntry',
 }
