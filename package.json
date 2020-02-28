@@ -1,6 +1,6 @@
 {
   "name": "@kiva/protocol-common",
-  "version": "0.0.10",
+  "version": "0.0.12",
   "description": "Common code for protocol webservices",
   "license": "none",
   "homepage": "https://github.com/kiva/protocol-common#readme",
@@ -12,7 +12,7 @@
   "main": "dist/main.js",
   "types": "main.d.ts",
   "files": [
-    "dist/**/*"
+    "*"
   ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"

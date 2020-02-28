@@ -2,7 +2,13 @@
     "compilerOptions": {
       "module": "commonjs",
       "declaration": true,
+      "noImplicitAny": false,
+      "removeComments": true,
+      "noLib": false,
+      "allowSyntheticDefaultImports": true,
+      "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
+      "sourceMap": true,
       "target": "es5",
       "lib": ["es2017", "es7", "es6", "dom"],
       "strict": false,
