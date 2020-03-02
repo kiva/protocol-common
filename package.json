@@ -1,20 +1,24 @@
 {
   "name": "@kiva/protocol-common",
-  "version": "0.0.3",
+  "version": "0.0.12",
   "description": "Common code for protocol webservices",
   "license": "none",
   "homepage": "https://github.com/kiva/protocol-common#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kiva/protocol-common.git",
-    "directory": "src"
+    "directory": ""
   },
+  "main": "dist/main.js",
+  "types": "main.d.ts",
+  "files": [
+    "*"
+  ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
-    "build": "tsc",
-    "prestart:prod": "rimraf dist && tsc",
+    "build": "rm -rf dist && tsc",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "lint:fix": "tslint -p tsconfig.json -c tslint.json --fix",
     "test": "node -r dotenv/config node_modules/.bin/jest --runInBand",
@@ -25,7 +29,9 @@
     "@nestjs/core": "^6.5.3",
     "@nestjs/platform-express": "^6.5.3",
     "axios": "^0.19.0",
+    "class-validator": "^0.9.1",
     "cls-hooked": "4.2.2",
+    "crypto-js": "^3.1.9-1",
     "dd-trace": "^0.15.3",
     "dotenv": "^6.2.0",
     "express-opentracing": "^0.1.1",
@@ -36,6 +42,16 @@
     "rxjs": "^6.5.3",
     "typescript": "^3.5.3",
     "winston-loggly-bulk": "^3.0.1"
+  },
+  "devDependencies": {
+    "@nestjs/testing": "^6.5.3",
+    "@types/jest": "^24.0.17",
+    "@types/supertest": "^2.0.8",
+    "jest": "^24.8.0",
+    "prettier": "^1.19.1",
+    "ts-jest": "^24.0.2",
+    "tslint": "^6.0.0",
+    "tslint-config-prettier": "^1.18.0"
   },
   "jest": {
     "globals": {

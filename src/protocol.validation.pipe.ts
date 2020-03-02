@@ -27,11 +27,19 @@ export class ProtocolValidationPipe extends ValidationPipe {
 
     /**
      * There's a bit of overlap here with RowError, but this is more universal
+     * For the top level code it only uses the first constraint or the first child
      */
     private convertErrorResult(result: ValidationError|any): any {
-        const keys = Object.keys(result.constraints);
-        result.code = keys[0] + 'Error';
-        result.message = result.constraints[keys[0]];
+        if (result.constraints) {
+            const keys = Object.keys(result.constraints);
+            result.code = keys[0] + 'Error';
+            result.message = result.constraints[keys[0]];
+        } else if (result.children) {
+            const child = result.children[0];
+            const keys = Object.keys(child.constraints);
+            result.code = keys[0] + 'Error';
+            result.message = child.constraints[keys[0]];
+        }
         result.level = 'error';
         return result;
     }

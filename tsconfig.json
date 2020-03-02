@@ -8,12 +8,15 @@
       "allowSyntheticDefaultImports": true,
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
-      "target": "es6",
       "sourceMap": true,
-      "outDir": "./dist"
+      "target": "es5",
+      "lib": ["es2017", "es7", "es6", "dom"],
+      "strict": false,
+      "outDir": "./dist",
+      "baseUrl": "./src"
     },
     "include": [
-      "**/*"
+      "src/**/*"
     ],
     "exclude": [
       "node_modules",

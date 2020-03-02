@@ -2,7 +2,7 @@ import { globalTracer, initGlobalTracer } from 'opentracing';
 import middleware from 'express-opentracing';
 import { initTracerFromEnv } from 'jaeger-client';
 import { tracer as ddtracer } from 'dd-trace';
-import { Logger } from '../common/logger';
+import { Logger } from './logger';
 
 /**
  * tracer
