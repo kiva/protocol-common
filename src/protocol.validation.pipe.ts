@@ -12,6 +12,7 @@ export class ProtocolValidationPipe extends ValidationPipe {
      * Default to no target but allow caller to define their own options if they want
      */
     constructor(options?: ValidationPipeOptions) {
+        super(options);
         options = options || {
             validationError: { target: false },
             exceptionFactory: (errors: ValidationError[]) => {
