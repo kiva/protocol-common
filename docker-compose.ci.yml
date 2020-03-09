@@ -1,0 +1,26 @@
+#
+#
+version: '3'
+
+networks:
+  kiva-network:
+    external: true
+
+services:
+  protocol-common:
+    env_file:
+      - ./.env
+    build: ./
+    command: sh
+    image: protocol-common
+    container_name: protocol-common
+    working_dir: /tools
+    volumes:
+      - ./:/tools
+      - node_modules:/tools/node_modules
+    networks:
+      - kiva-network
+    tty: true
+  
+volumes:
+  node_modules:
