@@ -8,7 +8,13 @@ export class DatadogLogger {
         // different environments format the output to stdout, stderr differently
         let formatter;
         switch (process.env.NODE_ENV) {
+            case Constants.DEV:
+            case Constants.PROD:
+            case Constants.SAND:
+                formatter = winston.format.json();
+                break;
             case Constants.LOCAL:
+            default:
                 // format console
                 formatter = winston.format.combine(
                     winston.format.colorize({all: true}),
@@ -22,12 +28,6 @@ export class DatadogLogger {
                         return `[${info.level}] ${process.pid}   - ${info.timestamp} : ${logMessage}`;
                     }),
                 );
-                break;
-            case Constants.DEV:
-            case Constants.PROD:
-            case Constants.SAND:
-            default:
-                formatter = winston.format.json();
                 break;
         }
 
