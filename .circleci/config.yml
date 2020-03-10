@@ -1,0 +1,18 @@
+version: 2.1
+jobs:
+    build:
+        machine:
+            docker_layer_caching: true
+        resource_class: large
+        working_directory: ~/repo
+        steps:
+            - checkout
+            - run: ./ci.sh
+            - run: |
+                  if [ "$CIRCLE_BRANCH" != "master" ]
+                    ./cd.sh
+                  fi
+            - run: |
+                if [ "$CIRCLE_BRANCH" != "master" ] || [ "$CD_SKIP" == "1" ]; then
+                    circleci-agent step halt
+                fi
