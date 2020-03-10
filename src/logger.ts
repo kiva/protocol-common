@@ -53,10 +53,7 @@ export class Logger implements LoggerService {
             message = message.substr(0, maxLogLength) + '...truncated';
         }
         // Ensure metadata is always an object
-        metadata = metadata || {};
-        if (typeof metadata !== 'object') {
-            metadata = { value: metadata };
-        }
+
         return {
             level,
             message,
