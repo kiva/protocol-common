@@ -8,12 +8,8 @@ jobs:
         steps:
             - checkout
             - run: |
-                  if [ "$CIRCLE_BRANCH" != "master" ]; then
+                if [ "$CIRCLE_BRANCH" == "master" ] || [ "$CD_SKIP" != "1" ]; then
                     ./cd.sh
                     circleci-agent step halt
                   fi
             - run: ./ci.sh
-            - run: |
-                if [ "$CD_SKIP" == "1" ]; then
-                    circleci-agent step halt
-                fi
