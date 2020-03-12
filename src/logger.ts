@@ -57,6 +57,7 @@ export class Logger implements LoggerService {
         return {
             level,
             message,
+            env: process.env.NODE_ENV,
             pid: process.pid,
             [HttpConstants.REQUEST_ID]: RequestContext.requestId(false),
             metadata,
