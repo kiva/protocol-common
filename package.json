@@ -1,6 +1,6 @@
 {
   "name": "@kiva/protocol-common",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "Common code for protocol webservices",
   "license": "none",
   "homepage": "https://github.com/kiva/protocol-common#readme",
