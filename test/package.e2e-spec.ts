@@ -47,9 +47,15 @@ describe('Span Tests', () => {
 
    });
 
-   it('No nested spans', () => {
+   it('GET - No nested spans', () => {
        return request(app.getHttpServer())
-           .get('/testservice/noNestedCalls')
+           .get('/testservice/noNestedCall')
+           .expect(200);
+   });
+
+   it('POST - No nested spans', () => {
+       return request(app.getHttpServer())
+           .post('/testservice/noNestedCall')
            .expect(200);
    });
 
