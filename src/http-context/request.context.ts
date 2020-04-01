@@ -41,10 +41,14 @@ export class RequestContext {
         return null;
     }
 
+    public getSpan(): Span {
+        return this.span;
+    }
+
     /**
      * Returns the current request context.
      */
-    private static currentRequestContext(): RequestContext {
+    public static currentRequestContext(): RequestContext {
         const session = cls.getNamespace(RequestContext.NSID);
         if (session && session.active) {
             return session.get(RequestContext.name);
