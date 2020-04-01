@@ -4,7 +4,8 @@ import { Logger } from '../src/logger';
 import { DatadogLogger} from '../src/datadog.logger';
 import { INestApplication } from '@nestjs/common';
 import { SpanInterceptor } from '../src/span.interceptor';
-import {TestCode, TestController, TestService} from './test.code';
+import { TestController, TestService} from './test.code';
+import { RequestContextModule } from '../src/http-context/request.context.module';
 
 describe('Sanity Tests', () => {
     let app: INestApplication;
@@ -30,6 +31,7 @@ describe('Span Tests', () => {
 
    beforeAll(async () => {
        const moduleRef = await Test.createTestingModule({
+           imports: [RequestContextModule],
            controllers: [TestController],
            providers: [TestService],
        }).compile();
@@ -39,7 +41,6 @@ describe('Span Tests', () => {
        app = moduleRef.createNestApplication();
        const logger = new Logger(DatadogLogger.getLogger());
        app.useLogger(logger);
-       app.useGlobalInterceptors(new SpanInterceptor());
        await app.init();
    });
 

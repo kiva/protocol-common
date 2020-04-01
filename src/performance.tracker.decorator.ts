@@ -2,7 +2,7 @@ import { Logger } from './logger';
 import { RequestContext } from './http-context/request.context';
 import { startChild } from './tracer';
 
-export function SubSpan(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+export function PeformanceTracker(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
     const originalMethod = descriptor.value;
     descriptor.value = async function(...args: any[]) {
         Logger.log(`started ${propertyKey}`);
@@ -11,11 +11,11 @@ export function SubSpan(target: any, propertyKey: string, descriptor: PropertyDe
         try {
             return await originalMethod.apply(this, args);
         } catch (e) {
-            Logger.log('catch');
+            Logger.log(`catch ${propertyKey}`);
             ctx.span.addTags({error: true, message: e.message});
             throw e;
         } finally {
-            Logger.log('finally');
+            Logger.log(`finally ${propertyKey}`);
             ctx.span.finish();
         }
     };
