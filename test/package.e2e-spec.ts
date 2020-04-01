@@ -3,7 +3,6 @@ import { Test } from '@nestjs/testing';
 import { Logger } from '../src/logger';
 import { DatadogLogger} from '../src/datadog.logger';
 import { INestApplication } from '@nestjs/common';
-import { SpanInterceptor } from '../src/span.interceptor';
 import { TestController, TestService} from './test.code';
 import { RequestContextModule } from '../src/http-context/request.context.module';
 
