@@ -45,10 +45,6 @@ describe('Span Tests', () => {
        await app.init();
    });
 
-   beforeEach(async () => {
-
-   });
-
    it('GET - No nested spans', () => {
        return request(app.getHttpServer())
            .get('/testservice/noNestedCall')
