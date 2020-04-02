@@ -1,9 +1,9 @@
 import { Logger } from '../src/logger';
-import { PeformanceTracker } from '../src/performance.tracker.decorator';
 import {Controller, Get, Injectable, Post, Req, Request} from '@nestjs/common';
+import { Trace } from '../src/trace.decorator';
 
 export class TestCode {
-    @PeformanceTracker
+    @Trace
     public async subSpanTest(): Promise<string> {
         Logger.log('subSpanTest subFunction called');
         return 'blah';
@@ -17,26 +17,26 @@ export class TestService {
 @Controller('testservice')
 export class TestController {
     @Get('/noNestedCall')
-    @PeformanceTracker
+    @Trace
     public async noNestedGetCall() : Promise<any> {
         return 'completed';
     }
 
     @Get('/nestedCall')
-    @PeformanceTracker
+    @Trace
     public async nestedGetCall() : Promise<any> {
         await new TestCode().subSpanTest();
         return 'completed';
     }
 
     @Post('/noNestedCall')
-    @PeformanceTracker
+    @Trace
     public async noNestedPostCall(@Req() req: Request) : Promise<any> {
         return 'completed';
     }
 
-    @Post('/noNestedCall')
-    @PeformanceTracker
+    @Post('/nestedCall')
+    @Trace
     public async nestedPostCall(@Req() req: Request) : Promise<any> {
         return 'completed';
     }
