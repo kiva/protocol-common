@@ -6,17 +6,19 @@ export function PeformanceTracker(target: any, propertyKey: string, descriptor: 
     const originalMethod = descriptor.value;
     descriptor.value = async function(...args: any[]) {
         Logger.log(`started ${propertyKey}`);
-        const request = RequestContext.currentRequestContext();
-        const ctx = startChild((request ? request.getSpan() : undefined), propertyKey);
+        const parentSpan = RequestContext.getSpan();
+        const childSpan = startChild({ span: parentSpan }, propertyKey).span;
+        RequestContext.setSpan(childSpan);
         try {
             return await originalMethod.apply(this, args);
         } catch (e) {
             Logger.log(`catch ${propertyKey}`);
-            ctx.span.addTags({error: true, message: e.message});
+            childSpan.addTags({error: true, message: e.message});
             throw e;
         } finally {
             Logger.log(`finally ${propertyKey}`);
-            ctx.span.finish();
+            childSpan.finish();
+            RequestContext.setSpan(parentSpan);
         }
     };
 }
