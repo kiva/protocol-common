@@ -5,6 +5,7 @@ import { DatadogLogger} from '../src/datadog.logger';
 import { INestApplication } from '@nestjs/common';
 import { TestController, TestService} from './test.code';
 import { RequestContextModule } from '../src/http-context/request.context.module';
+import { traceware } from '../src/tracer';
 
 describe('Sanity Tests', () => {
     let app: INestApplication;
@@ -40,6 +41,7 @@ describe('Span Tests', () => {
        app = moduleRef.createNestApplication();
        const logger = new Logger(DatadogLogger.getLogger());
        app.useLogger(logger);
+       app.use(traceware('test'));
        await app.init();
    });
 
@@ -56,7 +58,7 @@ describe('Span Tests', () => {
    it('POST - No nested spans', () => {
        return request(app.getHttpServer())
            .post('/testservice/noNestedCall')
-           .expect(200);
+           .expect(201);
    });
 
     afterAll(async () => {
