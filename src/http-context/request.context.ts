@@ -41,10 +41,6 @@ export class RequestContext {
         return null;
     }
 
-    public getSpan(): Span {
-        return this.span;
-    }
-
     /**
      * Returns the current request context.
      */
