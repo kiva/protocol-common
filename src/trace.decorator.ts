@@ -6,7 +6,7 @@ import { startChild } from './tracer';
  * Datadog.
  * @uses
  * ```
- * Trace
+ * @Trace
  * public myFunction() {}
  * ```
  */
