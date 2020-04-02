@@ -3,6 +3,9 @@ import { Test } from '@nestjs/testing';
 import { Logger } from '../src/logger';
 import { DatadogLogger} from '../src/datadog.logger';
 import { INestApplication } from '@nestjs/common';
+import { TestController, TestService} from './test.code';
+import { RequestContextModule } from '../src/http-context/request.context.module';
+import { traceware } from '../src/tracer';
 
 describe('Sanity Tests', () => {
     let app: INestApplication;
@@ -20,3 +23,55 @@ describe('Sanity Tests', () => {
         Logger.log('test complete', { element1: 'bob', element2: 'sam'});
     });
 });
+
+describe('Span Tests', () => {
+    let app: INestApplication;
+    let controller: TestController;
+    let service: TestService;
+
+   beforeAll(async () => {
+       const moduleRef = await Test.createTestingModule({
+           imports: [RequestContextModule],
+           controllers: [TestController],
+           providers: [TestService],
+       }).compile();
+
+       service = moduleRef.get<TestService>(TestService);
+       controller = moduleRef.get<TestController>(TestController);
+       app = moduleRef.createNestApplication();
+       const logger = new Logger(DatadogLogger.getLogger());
+       app.useLogger(logger);
+       app.use(traceware('test'));
+       await app.init();
+   });
+
+   it('GET - No nested spans', () => {
+       return request(app.getHttpServer())
+           .get('/testservice/noNestedCall')
+           .expect(200);
+   });
+
+    it('GET - with nested spans', () => {
+        return request(app.getHttpServer())
+            .get('/testservice/nestedCall')
+            .expect(200);
+    });
+
+    it('POST - No nested spans', () => {
+       return request(app.getHttpServer())
+           .post('/testservice/noNestedCall')
+           .expect(201);
+    });
+
+    it('POST - nested spans', () => {
+        return request(app.getHttpServer())
+            .post('/testservice/nestedCall')
+            .expect(201);
+    });
+
+    afterAll(async () => {
+        await app.close();
+    });
+});
+
+

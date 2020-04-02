@@ -1,6 +1,6 @@
 {
   "name": "@kiva/protocol-common",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Common code for protocol webservices",
   "license": "none",
   "homepage": "https://github.com/kiva/protocol-common#readme",
@@ -41,6 +41,7 @@
     "pg": "^7.12.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.5.2",
+    "supertest": "^4.0.2",
     "typescript": "^3.5.3",
     "winston-loggly-bulk": "^3.0.1"
   },

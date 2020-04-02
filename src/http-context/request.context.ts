@@ -72,4 +72,32 @@ export class RequestContext {
 
         return headers;
     }
+
+    /**
+     * Gets span off the current context
+     */
+    public static getSpan() {
+        const requestContext = RequestContext.currentRequestContext();
+        if (!requestContext || !requestContext.span) {
+            // TODO add to ProtocolErrorCode
+            throw new ProtocolException('MissingSpan', 'Missing span on request context');
+        }
+        return requestContext.span;
+    }
+
+    /**
+     * Sets the most recent child span onto the request context
+     */
+    public static setSpan(span) {
+        const session = cls.getNamespace(RequestContext.NSID);
+        if (!session || !session.active) {
+            throw new ProtocolException('MissingSpan', 'Missing span on request context');
+        }
+        const requestContext =  session.get(RequestContext.name);
+        if (!requestContext || !requestContext.span) {
+            throw new ProtocolException('MissingSpan', 'Missing span on request context');
+        }
+        requestContext.span = span;
+        session.set(RequestContext.name, requestContext);
+    }
 }
