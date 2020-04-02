@@ -48,7 +48,7 @@ export class RequestContext {
     /**
      * Returns the current request context.
      */
-    public static currentRequestContext(): RequestContext {
+    private static currentRequestContext(): RequestContext {
         const session = cls.getNamespace(RequestContext.NSID);
         if (session && session.active) {
             return session.get(RequestContext.name);
