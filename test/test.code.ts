@@ -22,9 +22,22 @@ export class TestController {
         return 'completed';
     }
 
+    @Get('/nestedCall')
+    @PeformanceTracker
+    public async nestedGetCall() : Promise<any> {
+        await new TestCode().subSpanTest();
+        return 'completed';
+    }
+
     @Post('/noNestedCall')
     @PeformanceTracker
     public async noNestedPostCall(@Req() req: Request) : Promise<any> {
+        return 'completed';
+    }
+
+    @Post('/noNestedCall')
+    @PeformanceTracker
+    public async nestedPostCall(@Req() req: Request) : Promise<any> {
         return 'completed';
     }
 }
