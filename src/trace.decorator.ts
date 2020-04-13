@@ -1,5 +1,12 @@
+import { globalTracer } from 'opentracing';
 import { RequestContext } from './http-context/request.context';
-import { startChild } from './tracer';
+
+function startChild(ctx: any, name: string) {
+    if (ctx.hasOwnProperty('span')) {
+        return { span: globalTracer().startSpan(name, { childOf: ctx.span }) };
+    }
+    return { span: globalTracer().startSpan(name) };
+}
 
 /**
  * A function decorator used to adding traceability of the function for reporting in sites like

@@ -1,8 +1,8 @@
-import { globalTracer, initGlobalTracer } from 'opentracing';
-import middleware from 'express-opentracing';
+import { initGlobalTracer } from 'opentracing';
 import { initTracerFromEnv } from 'jaeger-client';
 import { tracer as ddtracer } from 'dd-trace';
-import { Logger } from './logger';
+import middleware from 'express-opentracing';
+import {Logger} from './logger';
 
 /**
  * tracer
@@ -24,26 +24,26 @@ import { Logger } from './logger';
  * Callers should use initTracer instead to allow for different OpenTracing
  * vendors to be used.
  */
-export function initJaegerTracer(serviceName: string) {
+function initJaegerTracer(serviceName: string) {
     const config = {
-      serviceName,
-      sampler: {
-        type: 'const',
-        param: 1,
-      },
-      reporter: {
-        logSpans: true,
-      },
+        serviceName,
+        sampler: {
+            type: 'const',
+            param: 1,
+        },
+        reporter: {
+            logSpans: true,
+        },
     };
     const options = {
-      logger: {
-        info(msg) {
-          Logger.log(msg);
+        logger: {
+            info(msg) {
+                Logger.log(msg);
+            },
+            error(msg) {
+                Logger.error(msg);
+            },
         },
-        error(msg) {
-          Logger.error(msg);
-        },
-      },
     };
     const tracer = initTracerFromEnv(config, options);
     initGlobalTracer(tracer);
@@ -62,7 +62,7 @@ export function initJaegerTracer(serviceName: string) {
  * Callers should use initTracer instead to allow for different OpenTracing
  * vendors to be used.
  */
-export function initDatadogTracer(serviceName: string) {
+function initDatadogTracer(serviceName: string) {
     const tracer = ddtracer.init({
         service: serviceName,
         logger: {
@@ -96,6 +96,7 @@ export function initTracer(serviceName: string) {
         case 'datadog':
             return initDatadogTracer(serviceName);
         default:
+            Logger.warn(`initTracer() called without environment setup for tracing`);
             return null;
     }
 }
@@ -134,19 +135,4 @@ export function traceware(serviceName: string) {
         // trace calls
         middleware({tracer})(req, res, next);
       };
-}
-
-export function context(req: any) {
-  let sp = req.span;
-  if (sp == null) {
-    sp = globalTracer().startSpan('null-span');
-  }
-  return { span: sp };
-}
-
-export function startChild(ctx: any, name: string) {
-  if (ctx.hasOwnProperty('span')) {
-    return { span: globalTracer().startSpan(name, { childOf: ctx.span }) };
-  }
-  return { span: globalTracer().startSpan(name) };
 }
