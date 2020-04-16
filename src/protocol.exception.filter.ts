@@ -37,8 +37,7 @@ export class ProtocolExceptionFilter implements ExceptionFilter {
             Logger.warn(protocolException.message, logObject);
         } else if (exception instanceof HttpException && !(exception instanceof InternalServerErrorException)) {
             status = exception.getStatus();
-            const message = exception.message.message || exception.message.error || exception.constructor.name;
-            protocolException = new ProtocolException(exception.constructor.name, message, exception.message, status);
+            protocolException = new ProtocolException(exception.constructor.name, exception.message, null, status);
             Logger.warn(protocolException.message, logObject);
         } else {
             // The internal server errors are special, we want to ensure we log all the details, but the response is generic
