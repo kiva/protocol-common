@@ -33,13 +33,8 @@ export class ConfigService {
                 break;
         }
 
-        for (const [name, value] of Object.entries(env)) {
-
-            const field = value as any;
-            if (isNaN(field))
-                process.env[name] = value as string;
-            else
-                process.env[name] = (parseInt(field, 10)).toString();
+        for (const key of Object.keys(env)) {
+            process.env[key] = env[key];
         }
 
     }
