@@ -25,3 +25,28 @@ Typically you'll need to update this repo when you want to change code that's sh
 [github info](https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages)  
 [npm package how-to](https://itnext.io/step-by-step-building-and-publishing-an-npm-typescript-package-44fe7164964c)  
 [using experimental features in packages](https://medium.com/@nodejs/announcing-a-new-experimental-modules-1be8d2d6c2ff)
+
+# Config Module data format
+To use the ConfigModule, data needs to be passed in.  The data needs to be a specific format.  This is an example of that format.
+```
+{
+     "default": {
+       "SERVICE_NAME": "authservice"
+     },
+     "local": {
+       "WALLET_SYNC_SERVICE_URL": "http://protocol-wallet-sync-service:3004",
+       "IDENTITY_SERVICE_URL": "http://protocol-identity-service:8080",
+       "IDENTITY_SERVICE_BACKEND": "ncratemplate",
+       "MAX_LOG_LENGTH": 5000,
+       "JAEGER_ENDPOINT": "http://jaeger:14268/api/traces",
+       "JWT_EXPIRE_SECONDS": 36000,
+       "TRACER": "",
+       "RESTFUL_CLIENT_DELAY": 250,
+       "RESTFUL_CLIENT_RETRY": 5
+     },
+     "dev": {},
+     "qa": {},
+     "sand": {},
+     "prod": {}
+   }
+```
