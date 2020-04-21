@@ -35,14 +35,6 @@ export class ConfigService {
 
         for (const [name, value] of Object.entries(env)) {
 
-            // this next line doesnt compile
-            // process.env[name] = value;
-
-            // this next line causes error: "expiresIn" should be a number of seconds or string representing a timespan
-            // even when the values is stored as string or a number
-            // process.env[name] = value as any;
-
-            // attempted to detect datatype...no difference
             const field = value as any;
             if (isNaN(field))
                 process.env[name] = value as string;
@@ -50,7 +42,5 @@ export class ConfigService {
                 process.env[name] = (parseInt(field, 10)).toString();
         }
 
-        // always writes  "message": "expiresIn = 36000",
-        Logger.log(`expiresIn = ${process.env.JWT_EXPIRE_SECONDS}`)
     }
 }
