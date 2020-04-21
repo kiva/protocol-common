@@ -1,13 +1,18 @@
 import {Constants} from './constants';
+import {Logger} from './logger';
 
 /**
  * Reads input data to set environment variables.
  */
 export class ConfigModule {
 
+    constructor() {
+        Logger.info(`ConfigModule constructed`);
+    }
     public static init(data: any) {
         let env = { };
 
+        Logger.info(`ConfigModule init()`);
         switch (process.env.NODE_ENV) {
             case Constants.PROD:
                 env = {...data.default, ...data.prod};
@@ -32,6 +37,7 @@ export class ConfigModule {
             process.env[key] = env[key];
         }
 
+        Logger.info(`JWT_EXPIRE_SECONDS=${process.env.JWT_EXPIRE_SECONDS}`);
         return this;
     }
 }
