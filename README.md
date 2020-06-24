@@ -15,11 +15,12 @@ Typically you'll need to update this repo when you want to change code that's sh
 # Manual Building & Publishing
 (Note: only run the below steps if you want to manually build a package, generally it's better just to let CD do it)
 1. Make sure node version matches node version used in protocol docker images.  Currently this is v8.12.0.
-2. Pull from master branch.
-3. update version number in package.json 
-4. run `npm run build`.
-5. run script publish.sh.
-6. check in package.json
+2. Pull from master branch
+3. Update version number in package.json
+4. Run `npm run build`
+5. Get npm token and set it with `export NPM_TOKEN=<put token here>`
+6. Run script publish.sh
+7. Check in package.json changes
 
 ## notes
 [github info](https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages)  
