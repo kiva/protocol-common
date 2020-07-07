@@ -1,6 +1,8 @@
 # protocol-common
 Common code for protocol web services.  Please use NPM package for your work.
 
+TODO: make NPM package public
+
 # Getting Started
 Typically you'll need to update this repo when you want to change code that's shared among multiple services.
 1. Create a branch named after the Jira ticket you're working on (e.g. PRO-2000)
