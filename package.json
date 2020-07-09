@@ -1,7 +1,7 @@
 {
-  "name": "@kiva/protocol-common",
-  "version": "0.1.13",
-  "description": "Common code for protocol webservices",
+  "name": "protocol-common",
+  "version": "0.1.15",
+  "description": "Common code for kiva protocol webservices",
   "license": "Apache-2.0",
   "homepage": "https://github.com/kiva/protocol-common#readme",
   "type": "module",
@@ -10,13 +10,20 @@
     "url": "git+https://github.com/kiva/protocol-common.git",
     "directory": ""
   },
+  "keywords": [
+    "kiva",
+    "protocol",
+    "SSI",
+    "hyperledger"
+  ],
+  "author": "protocol-services",
   "main": "dist/main.js",
   "types": "main.d.ts",
   "files": [
     "*"
   ],
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "http://registry.npmjs.org/"
   },
   "scripts": {
     "build": "rm -rf dist && tsc",
