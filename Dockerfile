@@ -8,4 +8,6 @@ ADD .npmrc ./
 ADD package.json package-lock.json ./
 RUN npm install
 ADD . .
+RUN adduser -S app
+USER app
 CMD [ "sh" ]
