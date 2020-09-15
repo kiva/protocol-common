@@ -33,6 +33,10 @@ export class ConfigModule {
         }
 
         for (const key of Object.keys(env)) {
+            // do not set env from env.json if it already exists
+            if (process.env[key] !== undefined)
+                continue;
+
             process.env[key] = env[key];
         }
 
