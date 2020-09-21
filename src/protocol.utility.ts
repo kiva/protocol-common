@@ -12,17 +12,19 @@ export class ProtocolUtility {
     }
 
     /*
-        Given two dates, return difference in MS.
-        Assumes first input is newest, and oldest input is second resulting
-        in a positive return value.
+        Given two dates, return difference in MS.  Always returns a real number
+        which makes its simpler for consumers as they dont have to worry about
+        left or right.
         eg:
         ```
                 const startOf = new Date();
                 const deltaMS = timeDelta(new Date(), startOf));
+                const deltaMS2 = timeDelta(startOf, new Date());
+                // deltaMS === deltaMS2 === true
         ```
      */
-    public static timeDelta(newest: Date, oldest: Date): number {
-        let result = newest.getTime() - oldest.getTime();
+    public static timeDelta(l: Date, r: Date): number {
+        let result = l.getTime() - r.getTime();
         if (result <= 0) {
             result = (result + 1000) % 1000;
         }
