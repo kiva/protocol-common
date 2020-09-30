@@ -38,9 +38,14 @@ export class ProtocolUtility {
         Consumers can call this method to retry logic until a duration has passed or the retry logic
         returns true.
 
-        durationMS:  how long the retry will occur before it throws an exeption
+        durationMS:  how long the retry will occur before it throws an exception
         waitBetweenMD: delay between iterations
         retryFunction: async method containing retry logic.  On true, the retry loop exists.  On false it retries
+
+         toThink(): should retryFunction return 3 possible values:
+            -1 abort logic and throw exception (no current value for this)
+             0 to continue retry (currently false)
+             1 to exit retry and return true (currently true)
      */
     public static async retryForDuration(durationMS: number, waitBetweenMS: number, retryFunction: any): Promise<boolean> {
         if (!retryFunction) {
@@ -49,15 +54,16 @@ export class ProtocolUtility {
 
         const startOf = new Date();
         while (durationMS > ProtocolUtility.timeDelta(new Date(), startOf)) {
-            // no point in rushing this
-            await ProtocolUtility.delay(waitBetweenMS);
             try {
                 if (true === await retryFunction()) {
                     return true;
                 }
             } catch (e) {
                 // Do nothing and try again
+                // tothink() would it be benefical to have consumers provide input (aka call another closure) on how to proceed
             }
+
+            await ProtocolUtility.delay(waitBetweenMS);
         }
 
         throw new ProtocolException('Common Error', 'duration was exceeded');
