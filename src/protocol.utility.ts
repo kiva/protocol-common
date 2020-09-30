@@ -66,6 +66,6 @@ export class ProtocolUtility {
             await ProtocolUtility.delay(waitBetweenMS);
         }
 
-        throw new ProtocolException('Common Error', 'duration was exceeded');
+        throw new ProtocolException('CommonError', 'duration was exceeded');
     }
 }
