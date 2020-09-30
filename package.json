@@ -1,6 +1,6 @@
 {
   "name": "protocol-common",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "description": "Common code for kiva protocol webservices",
   "license": "Apache-2.0",
   "homepage": "https://github.com/kiva/protocol-common#readme",
