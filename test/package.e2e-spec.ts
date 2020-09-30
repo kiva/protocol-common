@@ -1,14 +1,14 @@
-import * as request from 'supertest';
-import { Test } from '@nestjs/testing';
-import { Logger } from '../src/logger';
-import { DatadogLogger} from '../src/datadog.logger';
-import { INestApplication } from '@nestjs/common';
-import { TestController, TestService} from './test.code';
-import { RequestContextModule } from '../src/http-context/request.context.module';
-import { traceware } from '../src/tracer';
-import { ProtocolUtility } from '../src/protocol.utility';
+    import * as request from 'supertest';
+    import { Test } from '@nestjs/testing';
+    import { Logger } from '../src/logger';
+    import { DatadogLogger} from '../src/datadog.logger';
+    import { INestApplication } from '@nestjs/common';
+    import { TestController, TestService} from './test.code';
+    import { RequestContextModule } from '../src/http-context/request.context.module';
+    import { traceware } from '../src/tracer';
+    import { ProtocolUtility } from '../src/protocol.utility';
 
-describe('Sanity Tests', () => {
+    describe('Sanity Tests', () => {
     let app: INestApplication;
     beforeAll(async () => {
         const moduleFixture = await Test.createTestingModule({}).compile();
@@ -23,14 +23,14 @@ describe('Sanity Tests', () => {
     it('logging with metadata', () => {
         Logger.log('test complete', { element1: 'bob', element2: 'sam'});
     });
-});
+    });
 
-describe('Span Tests', () => {
+    describe('Span Tests', () => {
     let app: INestApplication;
     let controller: TestController;
     let service: TestService;
 
-   beforeAll(async () => {
+    beforeAll(async () => {
        const moduleRef = await Test.createTestingModule({
            imports: [RequestContextModule],
            controllers: [TestController],
@@ -44,13 +44,13 @@ describe('Span Tests', () => {
        app.useLogger(logger);
        app.use(traceware('test'));
        await app.init();
-   });
+    });
 
-   it('GET - No nested spans', () => {
+    it('GET - No nested spans', () => {
        return request(app.getHttpServer())
            .get('/testservice/noNestedCall')
            .expect(200);
-   });
+    });
 
     it('GET - with nested spans', () => {
         return request(app.getHttpServer())
@@ -73,9 +73,9 @@ describe('Span Tests', () => {
     afterAll(async () => {
         await app.close();
     });
-});
+    });
 
-describe('Retry logic tests', () => {
+    describe('Retry logic tests', () => {
     it('retry throws exception on timeout', async () => {
         // @ts-ignore
         const retryFunction = undefined;
@@ -100,9 +100,22 @@ describe('Retry logic tests', () => {
        const result = await ProtocolUtility.retryForDuration(5000, 500, retryFunction);
        expect(result).toBe(true);
        return;
-   });
+    });
 
-   it('retry throws exception on timeout', async () => {
+    it('retry returns result example', async () => {
+        let retryResult = '';
+        const retryFunction = async (): Promise<boolean> => {
+            retryResult = 'hello';
+            return true;
+        };
+
+        const result = await ProtocolUtility.retryForDuration(5000, 500, retryFunction);
+        expect(result).toBe(true);
+        expect(retryResult).toBe('hello');
+        return;
+    });
+
+    it('retry throws exception on timeout', async () => {
        const retryFunction = async () => {
            return false;
        };
@@ -117,6 +130,6 @@ describe('Retry logic tests', () => {
 
        expect(exceptionFound).toBe(true);
        return;
-   }, 2100);
-});
+    }, 2100);
+    });
 
