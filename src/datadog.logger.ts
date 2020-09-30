@@ -8,27 +8,15 @@ export class DatadogLogger {
         // different environments format the output to stdout, stderr differently
         let formatter;
         switch (process.env.NODE_ENV) {
+            case Constants.LOCAL:
+                formatter = DatadogLogger.getConsoleFormatter();
+                break;
             case Constants.DEV:
             case Constants.PROD:
             case Constants.SAND:
-                formatter = winston.format.json();
-                break;
-            case Constants.LOCAL:
+            case Constants.QA:
             default:
-                // format console
-                formatter = winston.format.combine(
-                    winston.format.colorize({all: true}),
-                    winston.format.timestamp({format: 'MM-DD HH:mm:ss.SSS'}),
-                    winston.format.align(),
-                    winston.format.printf((info) => {
-                        let logMessage = info.message;
-                        if (info.metadata) {
-                            logMessage = info.message + ' - ' + inspect(info.metadata);
-                        }
-                        return `[${info.level}] ${process.pid}   - ${info.timestamp} : ${logMessage}`;
-                    }),
-                );
-                break;
+                formatter = winston.format.json();
         }
 
         // all output goes to stdout, so the same transport can be used
@@ -39,5 +27,23 @@ export class DatadogLogger {
         });
         transports.push(consoleTransport);
         return winston.createLogger({transports});
+    }
+
+    /**
+     * Format for local console
+     */
+    public static getConsoleFormatter() {
+        return winston.format.combine(
+            winston.format.colorize({all: true}),
+            winston.format.timestamp({format: 'MM-DD HH:mm:ss.SSS'}),
+            winston.format.align(),
+            winston.format.printf((info) => {
+                let logMessage = info.message;
+                if (info.metadata) {
+                    logMessage = info.message + ' - ' + inspect(info.metadata);
+                }
+                return `[${info.level}] ${process.pid}   - ${info.timestamp} : ${logMessage}`;
+            }),
+        );
     }
 }
