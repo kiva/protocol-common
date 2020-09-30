@@ -2,6 +2,8 @@
 /*
     Generic, commonly reused functions
 */
+import { ProtocolException } from './protocol.exception';
+
 export class ProtocolUtility {
     /*
     Protocol-common version of a sleep function
@@ -30,5 +32,31 @@ export class ProtocolUtility {
         }
 
         return result;
+    }
+
+    /*
+        durationMS:  how long the retry will occur before it throws an exeption
+        waitBetweenMD: delay between iterations
+        retryFunction: retry logic.  On true, the retry loop exists.  On false it retries
+     */
+    public static async retryForDuration(durationMS: number, waitBetweenMS: number, retryFunction: any): Promise<boolean> {
+        if (!retryFunction) {
+            throw new ProtocolException('Common Error', 'retryFunction is required');
+        }
+
+        const startOf = new Date();
+        while (durationMS > ProtocolUtility.timeDelta(new Date(), startOf)) {
+            // no point in rushing this
+            await ProtocolUtility.delay(waitBetweenMS);
+            try {
+                if (true === await retryFunction()) {
+                    return true;
+                }
+            } catch (e) {
+                // Do nothing and try again
+            }
+        }
+
+        throw new ProtocolException('Common Error', 'duration was exceeded');
     }
 }

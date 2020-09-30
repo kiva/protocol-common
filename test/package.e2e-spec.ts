@@ -6,6 +6,7 @@ import { INestApplication } from '@nestjs/common';
 import { TestController, TestService} from './test.code';
 import { RequestContextModule } from '../src/http-context/request.context.module';
 import { traceware } from '../src/tracer';
+import { ProtocolUtility } from '../src/protocol.utility';
 
 describe('Sanity Tests', () => {
     let app: INestApplication;
@@ -74,4 +75,48 @@ describe('Span Tests', () => {
     });
 });
 
+describe('Retry logic tests', () => {
+    it('retry throws exception on timeout', async () => {
+        // @ts-ignore
+        const retryFunction = undefined;
+
+        let exceptionFound = false;
+
+        try {
+            const result = await ProtocolUtility.retryForDuration(2000, 500, retryFunction);
+        } catch (e) {
+            exceptionFound = true;
+        }
+
+        expect(exceptionFound).toBe(true);
+        return;
+    });
+
+    it('retry exits on true', async () => {
+       const retryFunction = async (): Promise<boolean> => {
+           return true;
+       };
+
+       const result = await ProtocolUtility.retryForDuration(5000, 500, retryFunction);
+       expect(result).toBe(true);
+       return;
+   });
+
+   it('retry throws exception on timeout', async () => {
+       const retryFunction = async () => {
+           return false;
+       };
+
+       let exceptionFound = false;
+
+       try {
+           const result = await ProtocolUtility.retryForDuration(2000, 500, retryFunction);
+       } catch (e) {
+           exceptionFound = true;
+       }
+
+       expect(exceptionFound).toBe(true);
+       return;
+   }, 2100);
+});
 
