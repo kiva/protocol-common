@@ -35,9 +35,12 @@ export class ProtocolUtility {
     }
 
     /*
+        Consumers can call this method to retry logic until a duration has passed or the retry logic
+        returns true.
+
         durationMS:  how long the retry will occur before it throws an exeption
         waitBetweenMD: delay between iterations
-        retryFunction: retry logic.  On true, the retry loop exists.  On false it retries
+        retryFunction: async method containing retry logic.  On true, the retry loop exists.  On false it retries
      */
     public static async retryForDuration(durationMS: number, waitBetweenMS: number, retryFunction: any): Promise<boolean> {
         if (!retryFunction) {
