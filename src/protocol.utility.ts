@@ -36,7 +36,7 @@ export class ProtocolUtility {
 
     /*
         Consumers can call this method to retry logic until a duration has passed or the retry logic
-        returns true.
+        succeeds.  Success is the retryLogic returning a non nullish value.
 
         durationMS:  how long the retry will occur before it throws an exception
         waitBetweenMD: delay between iterations
