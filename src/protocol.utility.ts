@@ -24,7 +24,7 @@ export class ProtocolUtility {
                 const deltaMS2 = timeDelta(startOf, new Date());
                 // deltaMS === deltaMS2 === true
         ```
-     */
+    */
     public static timeDelta(l: Date, r: Date): number {
         let result = l.getTime() - r.getTime();
         if (result <= 0) {
@@ -40,27 +40,21 @@ export class ProtocolUtility {
 
         durationMS:  how long the retry will occur before it throws an exception
         waitBetweenMD: delay between iterations
-        retryFunction: async method containing retry logic.  On true, the retry loop exists.  On false it retries
+        retryFunction: async method containing retry logic.  retryFunction should return data if it is successful and the
+                       control loop will exit.  The data returned by the retryFunction will be returned to the caller.
 
-         toThink(): should retryFunction return 3 possible values:
-            -1 abort logic and throw exception (no current value for this)
-             0 to continue retry (currently false)
-             1 to exit retry and return true (currently true)
-     */
-    public static async retryForDuration(durationMS: number, waitBetweenMS: number, retryFunction: any): Promise<boolean> {
+                       any exception occurring in retryFunction will exit the loop without returning a result
+    */
+    public static async retryForDuration(durationMS: number, waitBetweenMS: number, retryFunction: any): Promise<any> {
         if (!retryFunction) {
-            throw new ProtocolException('Common Error', 'retryFunction is required');
+            throw new ProtocolException('CommonError', 'retryFunction is required');
         }
 
         const startOf = new Date();
         while (durationMS > ProtocolUtility.timeDelta(new Date(), startOf)) {
-            try {
-                if (true === await retryFunction()) {
-                    return true;
-                }
-            } catch (e) {
-                // Do nothing and try again
-                // tothink() would it be benefical to have consumers provide input (aka call another closure) on how to proceed
+            const result = await retryFunction();
+            if (result) {
+                return result;
             }
 
             await ProtocolUtility.delay(waitBetweenMS);

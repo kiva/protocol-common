@@ -76,60 +76,48 @@
     });
 
     describe('Retry logic tests', () => {
-    it('retry throws exception on timeout', async () => {
-        // @ts-ignore
-        const retryFunction = undefined;
+        it('retry throws exception on timeout', async () => {
+            // @ts-ignore
+            const retryFunction = undefined;
 
-        let exceptionFound = false;
+            let exceptionFound = false;
 
-        try {
-            const result = await ProtocolUtility.retryForDuration(2000, 500, retryFunction);
-        } catch (e) {
-            exceptionFound = true;
-        }
+            try {
+                const result = await ProtocolUtility.retryForDuration(2000, 500, retryFunction);
+            } catch (e) {
+                exceptionFound = true;
+            }
 
-        expect(exceptionFound).toBe(true);
-        return;
-    });
+            expect(exceptionFound).toBe(true);
+            return;
+        });
 
-    it('retry exits on true', async () => {
-       const retryFunction = async (): Promise<boolean> => {
-           return true;
-       };
+        it('retry exits result', async () => {
+            const testResult = 'hello';
+            const retryFunction = async (): Promise<any> => {
+               return testResult;
+            };
 
-       const result = await ProtocolUtility.retryForDuration(5000, 500, retryFunction);
-       expect(result).toBe(true);
-       return;
-    });
+            const result = await ProtocolUtility.retryForDuration(5000, 500, retryFunction);
+            expect(result).toBe(testResult);
+            return;
+        });
 
-    it('retry returns result example', async () => {
-        let retryResult = '';
-        const retryFunction = async (): Promise<boolean> => {
-            retryResult = 'hello';
-            return true;
-        };
+        it('retry throws exception on timeout', async () => {
+            const retryFunction = async () => {
+               return undefined;
+            };
 
-        const result = await ProtocolUtility.retryForDuration(5000, 500, retryFunction);
-        expect(result).toBe(true);
-        expect(retryResult).toBe('hello');
-        return;
-    });
+            let exceptionFound = false;
 
-    it('retry throws exception on timeout', async () => {
-       const retryFunction = async () => {
-           return false;
-       };
+            try {
+               const result = await ProtocolUtility.retryForDuration(2000, 500, retryFunction);
+            } catch (e) {
+               exceptionFound = true;
+            }
 
-       let exceptionFound = false;
-
-       try {
-           const result = await ProtocolUtility.retryForDuration(2000, 500, retryFunction);
-       } catch (e) {
-           exceptionFound = true;
-       }
-
-       expect(exceptionFound).toBe(true);
-       return;
-    }, 2100);
-    });
+            expect(exceptionFound).toBe(true);
+            return;
+        }, 2100);
+});
 
