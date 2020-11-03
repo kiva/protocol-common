@@ -42,7 +42,8 @@
             "single"
         ],
         "semicolon": true,
-        "variable-name": false
+        "variable-name": false,
+        "whitespace": [true, "check-module"]
     },
     "rulesDirectory": []
 }

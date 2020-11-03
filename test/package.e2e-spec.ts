@@ -1,15 +1,16 @@
-    import * as request from 'supertest';
-    import { Test } from '@nestjs/testing';
-    import { Logger } from '../src/logger';
-    import { DatadogLogger} from '../src/datadog.logger';
-    import { INestApplication } from '@nestjs/common';
-    import { TestController, TestService} from './test.code';
-    import { RequestContextModule } from '../src/http-context/request.context.module';
-    import { traceware } from '../src/tracer';
-    import { ProtocolUtility } from '../src/protocol.utility';
+import * as request from 'supertest';
+import { Test } from '@nestjs/testing';
+import { Logger } from '../src/logger';
+import { DatadogLogger } from '../src/datadog.logger';
+import { INestApplication } from '@nestjs/common';
+import { TestController, TestService } from './test.code';
+import { RequestContextModule } from '../src/http-context/request.context.module';
+import { traceware } from '../src/tracer';
+import { ProtocolUtility } from '../src/protocol.utility';
 
-    describe('Sanity Tests', () => {
+describe('Sanity Tests', () => {
     let app: INestApplication;
+
     beforeAll(async () => {
         const moduleFixture = await Test.createTestingModule({}).compile();
 
@@ -17,18 +18,18 @@
         const logger = new Logger(DatadogLogger.getLogger());
         app.useLogger(logger);
     });
+
     it('a sanity test using the logger', () => {
         Logger.log('test complete');
     });
+
     it('logging with metadata', () => {
         Logger.log('test complete', { element1: 'bob', element2: 'sam'});
     });
-    });
+});
 
-    describe('Span Tests', () => {
+describe('Span Tests', () => {
     let app: INestApplication;
-    let controller: TestController;
-    let service: TestService;
 
     beforeAll(async () => {
        const moduleRef = await Test.createTestingModule({
@@ -37,8 +38,6 @@
            providers: [TestService],
        }).compile();
 
-       service = moduleRef.get<TestService>(TestService);
-       controller = moduleRef.get<TestController>(TestController);
        app = moduleRef.createNestApplication();
        const logger = new Logger(DatadogLogger.getLogger());
        app.useLogger(logger);
@@ -73,51 +72,51 @@
     afterAll(async () => {
         await app.close();
     });
+});
+
+describe('Retry logic tests', () => {
+    it('retry throws exception on timeout', async () => {
+        // @ts-ignore
+        const retryFunction = undefined;
+
+        let exceptionFound = false;
+
+        try {
+            await ProtocolUtility.retryForDuration(2000, 500, retryFunction);
+        } catch (e) {
+            exceptionFound = true;
+        }
+
+        expect(exceptionFound).toBe(true);
+        return;
     });
 
-    describe('Retry logic tests', () => {
-        it('retry throws exception on timeout', async () => {
-            // @ts-ignore
-            const retryFunction = undefined;
+    it('retry exits result', async () => {
+        const testResult = 'hello';
+        const retryFunction = async (): Promise<any> => {
+           return testResult;
+        };
 
-            let exceptionFound = false;
+        const result = await ProtocolUtility.retryForDuration(5000, 500, retryFunction);
+        expect(result).toBe(testResult);
+        return;
+    });
 
-            try {
-                const result = await ProtocolUtility.retryForDuration(2000, 500, retryFunction);
-            } catch (e) {
-                exceptionFound = true;
-            }
+    it('retry throws exception on timeout', async () => {
+        const retryFunction = async () => {
+           return undefined;
+        };
 
-            expect(exceptionFound).toBe(true);
-            return;
-        });
+        let exceptionFound = false;
 
-        it('retry exits result', async () => {
-            const testResult = 'hello';
-            const retryFunction = async (): Promise<any> => {
-               return testResult;
-            };
+        try {
+           await ProtocolUtility.retryForDuration(2000, 500, retryFunction);
+        } catch (e) {
+           exceptionFound = true;
+        }
 
-            const result = await ProtocolUtility.retryForDuration(5000, 500, retryFunction);
-            expect(result).toBe(testResult);
-            return;
-        });
-
-        it('retry throws exception on timeout', async () => {
-            const retryFunction = async () => {
-               return undefined;
-            };
-
-            let exceptionFound = false;
-
-            try {
-               const result = await ProtocolUtility.retryForDuration(2000, 500, retryFunction);
-            } catch (e) {
-               exceptionFound = true;
-            }
-
-            expect(exceptionFound).toBe(true);
-            return;
-        }, 2100);
+        expect(exceptionFound).toBe(true);
+        return;
+    }, 2100);
 });
 
