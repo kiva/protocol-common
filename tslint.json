@@ -18,9 +18,7 @@
         "interface-name": [
             false
         ],
-        "max-classes-per-file": [
-            false
-        ],
+        "max-classes-per-file": false,
         "max-line-length": [
             true,
             150
@@ -36,25 +34,15 @@
         "no-empty-interface": false,
         "no-unused-expression": false,
         "object-literal-sort-keys": false,
-        "one-line": [
-            false
-        ],
-        "one-variable-per-declaration": [
-            false
-        ],
-        "ordered-imports": [
-            false
-        ],
+        "one-line": false,
+        "one-variable-per-declaration": false,
+        "ordered-imports": false,
         "quotemark": [
             true,
             "single"
         ],
-        "semicolon": [
-            true
-        ],
-        "variable-name": [
-            false
-        ]
+        "semicolon": true,
+        "variable-name": false
     },
     "rulesDirectory": []
 }

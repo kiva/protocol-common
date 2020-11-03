@@ -3,7 +3,6 @@ import * as cls from 'cls-hooked';
 import { RequestContext } from './request.context';
 
 /**
- * author: esmaeila
  * The middleware for setting request context related information.
  */
 @Injectable()

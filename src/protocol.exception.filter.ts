@@ -1,7 +1,6 @@
 import { ExceptionFilter, Catch, ArgumentsHost, HttpException, HttpStatus, InternalServerErrorException } from '@nestjs/common';
 import { Response, Request } from 'express';
 import { ProtocolException } from './protocol.exception';
-import { Constants } from './constants';
 import { Logger } from './logger';
 import { ProtocolErrorCode } from './protocol.errorcode';
 import { HttpConstants } from './http-context/http.constants';

@@ -1,17 +1,13 @@
-  
 import { Module, NestModule, MiddlewareConsumer, HttpModule } from '@nestjs/common';
 import { RequestContextMiddleware } from './request.context.middleware';
 
 /**
- * author: esmaeila
  * RequestContext module.
  */
-
 @Module({
     imports: [HttpModule],
     controllers: [],
 })
-
 export class RequestContextModule implements NestModule {
   constructor() {}
 
