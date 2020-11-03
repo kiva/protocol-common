@@ -1,9 +1,6 @@
-
 /**
- * author: esmaeila
  * Enum defines different http header names, etc.
  */
-
 export enum HttpConstants {
     REQUEST_ID_HEADER = 'x-request-id',
     REQUEST_ID = 'reqid',

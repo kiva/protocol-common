@@ -1,5 +1,5 @@
 import { Logger } from '../src/logger';
-import {Controller, Get, Injectable, Post, Req, Request} from '@nestjs/common';
+import { Controller, Get, Injectable, Post, Req, Request } from '@nestjs/common';
 import { Trace } from '../src/trace.decorator';
 
 export class TestCode {

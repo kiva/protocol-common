@@ -1,5 +1,4 @@
-import {Constants} from './constants';
-import {Logger} from './logger';
+import { Constants } from './constants';
 
 /**
  * Reads input data to set environment variables.
