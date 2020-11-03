@@ -119,4 +119,3 @@ describe('Retry logic tests', () => {
         return;
     }, 2100);
 });
-
