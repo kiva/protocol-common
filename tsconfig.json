@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "target": "ES2020",
+    "lib": ["ES2020"],
     "declaration": true,
     "noImplicitAny": false,
     "removeComments": true,
@@ -10,8 +13,6 @@
     "experimentalDecorators": true,
     "sourceMap": true,
     "noUnusedLocals": true,
-    "target": "es6",
-    "lib": ["es2017", "es7", "es6", "dom"],
     "strict": false,
     "outDir": "./dist",
     "baseUrl": "./src"

@@ -1,10 +1,10 @@
 {
   "name": "protocol-common",
-  "version": "0.1.22",
+  "version": "0.1.23",
   "description": "Common code for kiva protocol webservices",
   "license": "Apache-2.0",
+  "type": "commonjs",
   "homepage": "https://github.com/kiva/protocol-common#readme",
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kiva/protocol-common.git",
@@ -36,7 +36,7 @@
     "@nestjs/common": "^7.4.2",
     "@nestjs/core": "^7.4.2",
     "@nestjs/platform-express": "^7.4.2",
-    "axios": "^0.19.2",
+    "axios": "^0.21.0",
     "class-validator": "^0.12.2",
     "cls-hooked": "^4.2.2",
     "crypto-js": "^4.0.0",
