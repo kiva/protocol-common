@@ -8,17 +8,15 @@ jobs:
       tag: '14.15.1'
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install
-            - run: npm run build
-            - run: npm run lint
-            - run: npm test
-            - run: npm --version
-            - run: |
-                if [ "$CIRCLE_BRANCH" == "master" ] && [ "$CD_SKIP" != "1" ]; then
-                    ./publish.sh
-                fi
+      - run: npm install
+      - run: npm run build
+      - run: npm run lint
+      - run: npm test
+      - run: npm --version
+      - run: |
+          if [ "$CIRCLE_BRANCH" == "master" ] && [ "$CD_SKIP" != "1" ]; then
+              ./publish.sh
+          fi
 workflows:
     build-and-test:
       jobs:
