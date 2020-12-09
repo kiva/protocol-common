@@ -12,7 +12,7 @@ jobs:
       - run: npm run build
       - run: npm run lint
       - run: npm test
-      - run: npm --version
+      - run: node --version
       - run: |
           if [ "$CIRCLE_BRANCH" == "master" ] && [ "$CD_SKIP" != "1" ]; then
               ./publish.sh
