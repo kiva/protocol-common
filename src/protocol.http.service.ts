@@ -65,7 +65,7 @@ export class ProtocolHttpService {
                             break;
                         default:
                             // Handle regular http errors
-                            if (e.response && e.response.data && e.response.data.code && e.response.data.message) {
+                            if (e.response && e.response.data && e.response.data.code && (e.response.data.message !== undefined)) {
                                 // This is a well formatted micro service exception that we need to bubble up
                                 const data = e.response.data;
                                 reject(new ProtocolException(data.code, data.message, data.details, e.response.status));
