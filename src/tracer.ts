@@ -67,6 +67,8 @@ function initDatadogTracer(serviceName: string) {
         service: serviceName,
         logger: {
             debug: message => Logger.log(message),
+            info: message => Logger.info(message),
+            warn: message => Logger.warn(message),
             error: err => Logger.error(err.toString()),
         },
     });

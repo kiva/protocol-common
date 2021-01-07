@@ -1,6 +1,6 @@
 {
   "name": "protocol-common",
-  "version": "0.1.26",
+  "version": "0.1.27",
   "description": "Common code for kiva protocol webservices",
   "license": "Apache-2.0",
   "type": "commonjs",
@@ -33,14 +33,14 @@
     "setup": "npm link"
   },
   "dependencies": {
-    "@nestjs/common": "^7.5.5",
+    "@nestjs/common": "^7.6.5",
     "@nestjs/core": "^7.5.5",
     "@nestjs/platform-express": "^7.5.5",
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "class-validator": "^0.12.2",
     "cls-hooked": "^4.2.2",
     "crypto-js": "^4.0.0",
-    "dd-trace": "^0.24.0",
+    "dd-trace": "^0.29.2",
     "dotenv": "^8.2.0",
     "express-opentracing": "^0.1.1",
     "jaeger-client": "^3.18.1",
