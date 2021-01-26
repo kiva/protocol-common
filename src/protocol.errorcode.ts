@@ -4,7 +4,7 @@
 export enum ProtocolErrorCode {
     COMMON_ERROR = 'CommonError',
     BIOANALYZER_SERVER_ERROR = 'BioanalyzerServerError',
-    FINGERPRINT_NOMATCH = 'FingerprintNoMatch',
+    FINGERPRINT_NO_MATCH = 'FingerprintNoMatch',
     FINGERPRINT_LOW_QUALITY = 'FingerprintLowQuality',
     FINGERPRINT_MISSING_NOT_CAPTURED = 'FingerprintMissingNotCaptured',
     FINGERPRINT_MISSING_AMPUTATION = 'FingerprintMissingAmputation',
