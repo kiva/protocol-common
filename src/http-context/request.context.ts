@@ -1,6 +1,6 @@
 import * as cls from 'cls-hooked';
 import { ProtocolException } from '../protocol.exception';
-import { ProtocolErrorCode } from '../errorcode/protocol.errorcode';
+import { ProtocolErrorCode } from '../protocol.errorcode';
 import { HttpConstants } from './http.constants';
 import { globalTracer, Span, FORMAT_HTTP_HEADERS } from 'opentracing';
 

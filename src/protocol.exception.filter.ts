@@ -2,7 +2,7 @@ import { ExceptionFilter, Catch, ArgumentsHost, HttpException, HttpStatus, Inter
 import { Response, Request } from 'express';
 import { ProtocolException } from './protocol.exception';
 import { Logger } from './logger';
-import { ProtocolErrorCode } from './errorcode/protocol.errorcode';
+import { ProtocolErrorCode } from './protocol.errorcode';
 import { HttpConstants } from './http-context/http.constants';
 
 /**
