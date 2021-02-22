@@ -13,6 +13,14 @@ export class Logger implements LoggerService {
         logger = instanceLogger || NestLogger;
     }
 
+    public static debug(message: string, metadata?: any) {
+        // only allow logging if the env variable is not undefined, null, empty string
+        if (process.env.DEBUG_ENABLED == null || process.env.DEBUG_ENABLED === '')
+            return;
+
+        logger.log(Logger.formatMessage('debug', message, metadata));
+    }
+
     public static log(message: string, metadata?: any) {
         logger.log(Logger.formatMessage('info', message, metadata));
     }
