@@ -13,6 +13,7 @@ export enum ProtocolErrorCode {
     VALIDATION_EXCEPTION = 'ValidationException',
     DUPLICATE_ENTRY = 'DuplicateEntry',
     NO_CITIZEN_FOUND = 'NoCitizenFound',
+    NOT_FOUND = 'NotFound',
     TOO_MANY_FOUND = 'TooManyFound',
     INVALID_TOKEN = 'InvalidToken',
     MISSING_AGENT_ID = 'MissingAgentId',
