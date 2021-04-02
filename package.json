@@ -37,6 +37,7 @@
     "@nestjs/core": "^7.5.5",
     "@nestjs/platform-express": "^7.5.5",
     "axios": "^0.21.1",
+    "class-transformer": "^0.3.2",
     "class-validator": "^0.12.2",
     "cls-hooked": "^4.2.2",
     "crypto-js": "^4.0.0",
@@ -71,7 +72,7 @@
       "ts"
     ],
     "rootDir": "test",
-    "testRegex": ".e2e-spec.ts$",
+    "testRegex": ".(e2e-spec|spec).ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
