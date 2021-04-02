@@ -3,21 +3,24 @@
  */
 export enum ProtocolErrorCode {
 
-    // Common error codes
+    // Generic error codes
     COMMON_ERROR = 'CommonError',
-    MISSING_DEVICE_DETAILS = 'MissingDeviceDetails',
-    INTERNAL_SERVER_ERROR = 'InternalServerError',
-    INVALID_NODE_ENVIRONMENT = 'InvalidNodeEnvironment',
-    REGISTRY_CONNECTION_ERROR = 'RegistryConnectionError',
-    MISSING_REQUEST_ID = 'MissingRequestId',
-    VALIDATION_EXCEPTION = 'ValidationException',
-    DUPLICATE_ENTRY = 'DuplicateEntry',
-    NO_CITIZEN_FOUND = 'NoCitizenFound',
     NOT_FOUND = 'NotFound',
     TOO_MANY_FOUND = 'TooManyFound',
+    NOT_IMPLEMENTED = 'NotImplemented',
+    INTERNAL_SERVER_ERROR = 'InternalServerError',
+    INVALID_NODE_ENVIRONMENT = 'InvalidNodeEnvironment',
+    DUPLICATE_ENTRY = 'DuplicateEntry',
+    MISSING_REQUEST_ID = 'MissingRequestId',
+    VALIDATION_EXCEPTION = 'ValidationException',
     INVALID_TOKEN = 'InvalidToken',
-    MISSING_AGENT_ID = 'MissingAgentId',
     MISSING_CONFIGURATION = 'MissingConfiguration',
+
+    // Domain-specific error codes
+    REGISTRY_CONNECTION_ERROR = 'RegistryConnectionError',
+    MISSING_DEVICE_DETAILS = 'MissingDeviceDetails',
+    NO_CITIZEN_FOUND = 'NoCitizenFound',
+    MISSING_AGENT_ID = 'MissingAgentId',
     MISSING_SPAN = 'MissingSpan',
 
     // Bio Auth error codes
