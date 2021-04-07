@@ -56,4 +56,5 @@ export enum ProtocolErrorCode {
     PROOF_FAILED_UNFULFILLED = 'ProofFailedUnfulfilled',
     PROOF_FAILED_VERIFICATION = 'ProofFailedVerification',
     CONNECTION_NOT_READY = 'ConnectionNotReady',
+    AGENT_CALL_FAILED = 'AgentCallFailed',
 }
