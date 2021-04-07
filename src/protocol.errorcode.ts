@@ -49,8 +49,11 @@ export enum ProtocolErrorCode {
     OTP_EXPIRED = 'OtpExpired',
     TOO_MANY_ATTEMPTS = 'TooManyAttempts',
 
-    // Credential error codes
-    NO_MATCHING_CREDENTIAL = 'NoMatchingCredential',
+    // Aries related error codes
     NO_CREDENTIAL_TO_REVOKE = 'NoCredentialToRevoke',
     NO_CRED_DEF = 'NoCredDef',
+    PROOF_FAILED_NO_RESPONSE = 'ProofFailedNoResponse',
+    PROOF_FAILED_UNFULFILLED = 'ProofFailedUnfulfilled',
+    PROOF_FAILED_VERIFICATION = 'ProofFailedVerification',
+    CONNECTION_NOT_READY = 'ConnectionNotReady',
 }
