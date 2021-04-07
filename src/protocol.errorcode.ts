@@ -15,7 +15,8 @@ export enum ProtocolErrorCode {
     VALIDATION_EXCEPTION = 'ValidationException',
     INVALID_TOKEN = 'InvalidToken',
     MISSING_CONFIGURATION = 'MissingConfiguration',
-
+    PLUGIN_ERROR = 'PluginError',
+    
     // Domain-specific error codes
     REGISTRY_CONNECTION_ERROR = 'RegistryConnectionError',
     MISSING_DEVICE_DETAILS = 'MissingDeviceDetails',
@@ -46,5 +47,14 @@ export enum ProtocolErrorCode {
     SMS_SEND_FAILED = 'SmsSendFailed',
     OTP_NO_MATCH = 'OtpNoMatch',
     OTP_EXPIRED = 'OtpExpired',
-    TOO_MANY_ATTEMPTS = 'TooManyAttempts'
+    TOO_MANY_ATTEMPTS = 'TooManyAttempts',
+
+    // Aries related error codes
+    NO_CREDENTIAL_TO_REVOKE = 'NoCredentialToRevoke',
+    NO_CRED_DEF = 'NoCredDef',
+    PROOF_FAILED_NO_RESPONSE = 'ProofFailedNoResponse',
+    PROOF_FAILED_UNFULFILLED = 'ProofFailedUnfulfilled',
+    PROOF_FAILED_VERIFICATION = 'ProofFailedVerification',
+    CONNECTION_NOT_READY = 'ConnectionNotReady',
+    AGENT_CALL_FAILED = 'AgentCallFailed',
 }
