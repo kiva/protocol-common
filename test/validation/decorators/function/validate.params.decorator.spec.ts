@@ -1,10 +1,10 @@
 import { IsInt, IsNumber } from 'class-validator';
-import { ValidateParams } from '../../../../src/validation/decorator/function/validate.params.decorator';
-import { IsValidInstance } from '../../../../src/validation/decorator/parameter/is.valid.instance.decorator';
+import { ValidateParams } from '../../../../src/validation/decorators/function/validate.params.decorator';
+import { IsValidInstance } from '../../../../src/validation/decorators/parameter/is.valid.instance.decorator';
 import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode';
-import { GreaterThan } from '../../../../src/validation/decorator/parameter/greater.than.decorator';
-import { LessThan } from '../../../../src/validation/decorator/parameter/less.than.decorator';
-import { IsInteger } from '../../../../src/validation/decorator/parameter/is.integer.decorator';
+import { GreaterThan } from '../../../../src/validation/decorators/parameter/greater.than.decorator';
+import { LessThan } from '../../../../src/validation/decorators/parameter/less.than.decorator';
+import { IsInteger } from '../../../../src/validation/decorators/parameter/is.integer.decorator';
 
 class TestClass1 {
     @IsInt() id: number;
@@ -46,7 +46,7 @@ describe('@ValidateParams tests', () => {
 
     const fixture = new TestFixture();
 
-    describe('A function that accepts a single parameter with the @IsValidInstance decorator', () => {
+    describe('A function that accepts a single validations with the @IsValidInstance decorators', () => {
 
         it('should succeed given valid params', () => {
             const obj: any = {
@@ -131,7 +131,7 @@ describe('@ValidateParams tests', () => {
         });
     });
 
-    describe('A function with a parameter that expects multiple validations', () => {
+    describe('A function with a validations that expects multiple validations', () => {
 
         it('should succeed given a valid param', () => {
             const result = fixture.testFn4(50);

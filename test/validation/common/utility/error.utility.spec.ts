@@ -1,15 +1,8 @@
 import { ValidationError } from 'class-validator';
-import {
-    buildParamValidation,
-    buildParamValidationDecorator,
-    formatErrors,
-    throwValidationException
-} from '../../src/validation/internal/param.validation.utility';
-import { ProtocolErrorCode } from '../../dist/protocol.errorcode';
-import { ParamValidationError } from '../../src/validation/param.validation.error';
-import { ValidateParams } from '../../src/validation/decorator/function/validate.params.decorator';
+import { formatErrors, throwValidationException } from '../../../../src/validation/common/utility/error.utility';
+import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode';
 
-describe('ParamValidationUtility tests', () => {
+describe('Error utility tests', () => {
 
     describe('formatErrors() tests', () => {
 
@@ -127,70 +120,6 @@ describe('ParamValidationUtility tests', () => {
             } catch (e) {
                 expect(e.code).toBe(ProtocolErrorCode.VALIDATION_EXCEPTION);
                 expect(e.details).toBe(errors);
-            }
-        });
-    });
-
-    describe('buildParamValidation() tests', () => {
-
-        it('should build a ParamValidation function that uses a simple string as an error message', () => {
-            const successInput = 'foo';
-            const failureInput = 'bar';
-            const validationId = 'MyValidation';
-            const errorMessage = 'Simple error message';
-            const validationFun = (param: any) => param === successInput;
-            const paramValidation = buildParamValidation(validationId, errorMessage, validationFun);
-
-            const successResult = paramValidation(successInput);
-            expect(successResult).toHaveLength(0);
-
-            const expectedError = new ParamValidationError(validationId, errorMessage, failureInput);
-            const errorResult = paramValidation(failureInput);
-            expect(errorResult).toHaveLength(1);
-            expect(errorResult[0]).toEqual(expectedError);
-        });
-
-        it('should build a ParamValidation function that uses a simple string as an error message', () => {
-            const successInput = 'foo';
-            const failureInput = 'bar';
-            const validationId = 'MyValidation';
-            const errorMessage = (param: any) => `${param}-induced error message`;
-            const validationFun = (param: any) => param === successInput;
-            const paramValidation = buildParamValidation(validationId, errorMessage, validationFun);
-
-            const successResult = paramValidation(successInput);
-            expect(successResult).toHaveLength(0);
-
-            const expectedError = new ParamValidationError(validationId, errorMessage(failureInput), failureInput);
-            const errorResult = paramValidation(failureInput);
-            expect(errorResult).toHaveLength(1);
-            expect(errorResult[0]).toEqual(expectedError);
-        });
-    });
-
-    describe('buildParamValidationDecorator() tests', () => {
-
-        const successInput = 'foo';
-        const failureInput = 'bar';
-        const paramValidation = buildParamValidation('MyValidation', 'Err!', (param: any) => param === successInput);
-        const MyDecorator = buildParamValidationDecorator(paramValidation);
-
-        class MyClass {
-            @ValidateParams
-            myFunction(@MyDecorator param: string) {
-                return true;
-            }
-        }
-
-        it('should build a decorator that can be used to mark a parameter for validation', () => {
-            const instance = new MyClass();
-            expect(instance.myFunction(successInput)).toBe(true);
-            try {
-                instance.myFunction(failureInput);
-                fail('Expected a ValidationException error to be thrown');
-            } catch (e) {
-                expect(e.code).toBe(ProtocolErrorCode.VALIDATION_EXCEPTION);
-                expect(e.details).toHaveLength(1);
             }
         });
     });
