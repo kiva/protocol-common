@@ -1,5 +1,5 @@
-import { ValidateParams } from '../../../../src/validation/decorator/function/validate.params.decorator';
-import { IsInteger } from '../../../../src/validation/decorator/parameter/is.integer.decorator';
+import { ValidateParams } from '../../../../src/validation/decorators/function/validate.params.decorator';
+import { IsInteger } from '../../../../src/validation/decorators/parameter/is.integer.decorator';
 import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode';
 
 class TestFixture {

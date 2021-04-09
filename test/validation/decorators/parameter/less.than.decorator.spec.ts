@@ -1,5 +1,5 @@
-import { ValidateParams } from '../../../../src/validation/decorator/function/validate.params.decorator';
-import { LessThan } from '../../../../src/validation/decorator/parameter/less.than.decorator';
+import { ValidateParams } from '../../../../src/validation/decorators/function/validate.params.decorator';
+import { LessThan } from '../../../../src/validation/decorators/parameter/less.than.decorator';
 import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode';
 
 class TestFixture {
@@ -15,7 +15,7 @@ class TestFixture {
     }
 }
 
-describe('@LessThan decorator tests', () => {
+describe('@LessThan decorators tests', () => {
 
     const fixture = new TestFixture();
 

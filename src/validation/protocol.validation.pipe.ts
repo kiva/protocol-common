@@ -1,6 +1,6 @@
 import { ValidationPipe, ValidationPipeOptions } from '@nestjs/common';
 import { ValidationError } from 'class-validator';
-import { formatErrors, throwValidationException } from './internal/param.validation.utility';
+import { formatErrors, throwValidationException } from './common/utility/error.utility';
 
 /**
  * For all protocol validations we don't want to show the target

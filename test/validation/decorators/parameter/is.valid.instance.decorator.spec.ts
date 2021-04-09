@@ -1,6 +1,6 @@
 import { IsInt, Length } from 'class-validator';
-import { ValidateParams } from '../../../../src/validation/decorator/function/validate.params.decorator';
-import { IsValidInstance } from '../../../../src/validation/decorator/parameter/is.valid.instance.decorator';
+import { ValidateParams } from '../../../../src/validation/decorators/function/validate.params.decorator';
+import { IsValidInstance } from '../../../../src/validation/decorators/parameter/is.valid.instance.decorator';
 import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode';
 
 class TestClass1 {
@@ -15,7 +15,7 @@ class TestFixture {
     }
 }
 
-describe('@IsValidInstance decorator tests', () => {
+describe('@IsValidInstance decorators tests', () => {
 
     const fixture = new TestFixture();
 

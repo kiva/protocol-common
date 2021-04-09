@@ -1,6 +1,6 @@
-import { ValidateParams } from '../../../../src/validation/decorator/function/validate.params.decorator';
+import { ValidateParams } from '../../../../src/validation/decorators/function/validate.params.decorator';
 import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode';
-import { GreaterThan } from '../../../../src/validation/decorator/parameter/greater.than.decorator';
+import { GreaterThan } from '../../../../src/validation/decorators/parameter/greater.than.decorator';
 
 class TestFixture {
 
@@ -15,7 +15,7 @@ class TestFixture {
     }
 }
 
-describe('@GreaterThan decorator tests', () => {
+describe('@GreaterThan decorators tests', () => {
 
     const fixture = new TestFixture();
 
@@ -23,7 +23,6 @@ describe('@GreaterThan decorator tests', () => {
 
         it('should succeed given a valid value', () => {
             expect(fixture.testFn1(11)).toBe(true); // simple
-            expect(fixture.testFn1(1000)).toBe(true); // negative
             expect(fixture.testFn1(10.1)).toBe(true); // non-integer
             expect(fixture.testFn1(Number.MAX_SAFE_INTEGER)).toBe(true); // max value
         });
@@ -63,7 +62,6 @@ describe('@GreaterThan decorator tests', () => {
 
         it('should succeed given a valid value', () => {
             expect(fixture.testFn2(11)).toBe(true); // simple
-            expect(fixture.testFn2(1000)).toBe(true); // negative
             expect(fixture.testFn2(10.2)).toBe(true); // non-integer
             expect(fixture.testFn2(Number.MAX_SAFE_INTEGER)).toBe(true); // max value
         });
