@@ -1,7 +1,7 @@
 import { ParamValidation } from '../../common/param.validation';
 import { paramValidationMetadataKey } from '../../common/utility/decorator.utility';
 import { ClassConstructor } from 'class-transformer';
-import { ParamValidationWithType } from '../../common/param.validation.with.type';
+import { ParamValidationWithTypeMetadata } from '../../common/param.validation.with.type.metadata';
 import { ParamValidationError } from '../../common/param.validation.error';
 import { throwValidationException } from '../../common/utility/error.utility';
 import { isTypedValidation } from '../../common/utility/common.utility';
@@ -11,8 +11,8 @@ import { isTypedValidation } from '../../common/utility/common.utility';
  * This function will attempt to validate a validations using the provided validations. If any validations fail, it will return an array containing
  * all the errors.
  */
-const validateParam = (param: any, validations: (ParamValidation | ParamValidationWithType)[], paramType: ClassConstructor<any>): any[] => {
-    return validations.flatMap((validation: ParamValidation | ParamValidationWithType) => {
+const validateParam = (param: any, validations: (ParamValidation | ParamValidationWithTypeMetadata)[], paramType: ClassConstructor<any>): any[] => {
+    return validations.flatMap((validation: ParamValidation | ParamValidationWithTypeMetadata) => {
         if (isTypedValidation(validation)) {
             if (paramType) {
                 return validation(param, paramType);
@@ -37,12 +37,13 @@ export const ValidateParams: MethodDecorator = (targetPrototype: any, methodName
     descriptor.value = function (...params: any[]) {
         const paramTypes: ClassConstructor<any> = Reflect.getMetadata('design:paramtypes', targetPrototype, methodName);
         const errors: any[] = params.flatMap((param: any, paramIndex: number) => {
-            const validations: (ParamValidation | ParamValidationWithType)[] = Reflect.getMetadata(
+            const validations: (ParamValidation | ParamValidationWithTypeMetadata)[] = Reflect.getMetadata(
                 paramIndex,
                 targetPrototype,
                 paramValidationMetadataKey(methodName)
             ) || [];
-            return validateParam(param, validations, paramTypes[paramIndex]?.prototype?.constructor);
+            const ctor = paramTypes[paramIndex]?.prototype?.constructor;
+            return validateParam(param, validations, ctor);
         });
         if (errors.length > 0) {
             throwValidationException(errors);

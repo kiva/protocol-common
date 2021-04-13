@@ -9,7 +9,7 @@ class TestClass1 {
 
 describe('isValidInstance & isValidInstanceOrFail tests', () => {
 
-    it('should succeed given valid fields of an `any` tpyed object', () => {
+    it('should succeed given valid fields of an `any` typed object', () => {
         const obj: any = {
             id: 1,
             name: 'foobar'
