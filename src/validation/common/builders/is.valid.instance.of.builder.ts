@@ -22,22 +22,15 @@ export const isValidInstanceOfBuilder: (...paramTypes: NonEmptyArray<ClassConstr
         return [new ParamValidationError('IsObject', `Value must be an object but was ${typeof param}.`, param)];
     }
 
-    // Check errors on all possible paramTypes
-    let success: boolean = false;
+    // Check errors on all possible paramTypes and return errors keyed on the class name.
     const allErrors: {[name: string]: any[]}[] = paramTypes.map((paramType: ClassConstructor<object>) => {
         const name: string = paramType.name;
         const paramAsClass = plainToClass(paramType, param);
         const errors = validateSync(paramAsClass);
-        if (errors.length === 0) {
-            success = true;
-        }
         return { [name]: formatErrors(errors) };
     });
 
-    // Return results
-    if (success) {
-        return [];
-    } else {
-        return allErrors;
-    }
+    // We want to return no errors if any object's validation passed; this is an OR operation, not an AND.
+    const someClassPassedValidation = allErrors.some((entry: {[name: string]: any[]}) => Object.values(entry).flat().length === 0);
+    return someClassPassedValidation ? [] : allErrors;
 };
