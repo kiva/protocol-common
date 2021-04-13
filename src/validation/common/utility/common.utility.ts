@@ -1,9 +1,9 @@
 import { ParamValidation } from '../param.validation';
-import { ParamValidationWithType } from '../param.validation.with.type';
+import { ParamValidationWithTypeMetadata } from '../param.validation.with.type.metadata';
 
 /**
  * Custom type guard to differentiate between ParamValidation and ParamValidationWithType.
  */
-export const isTypedValidation = (validation: ParamValidation | ParamValidationWithType): validation is ParamValidationWithType => {
-    return validation.length === 2;
+export const isTypedValidation = (validation: ParamValidation | ParamValidationWithTypeMetadata): validation is ParamValidationWithTypeMetadata => {
+    return validation.length > 1;
 };
