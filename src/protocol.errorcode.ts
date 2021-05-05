@@ -16,6 +16,7 @@ export enum ProtocolErrorCode {
     INVALID_TOKEN = 'InvalidToken',
     MISSING_CONFIGURATION = 'MissingConfiguration',
     PLUGIN_ERROR = 'PluginError',
+    FORBIDDEN_EXCEPTION = 'ForbiddenException',
     
     // Domain-specific error codes
     REGISTRY_CONNECTION_ERROR = 'RegistryConnectionError',
@@ -23,6 +24,8 @@ export enum ProtocolErrorCode {
     NO_CITIZEN_FOUND = 'NoCitizenFound',
     MISSING_AGENT_ID = 'MissingAgentId',
     MISSING_SPAN = 'MissingSpan',
+    NOT_REGISTERED = 'NotRegistered',
+    RATE_LIMIT_CONFIGURATION = 'RateLimitConfiguration',
 
     // Bio Auth error codes
     BIOANALYZER_SERVER_ERROR = 'BioanalyzerServerError',
@@ -57,4 +60,6 @@ export enum ProtocolErrorCode {
     PROOF_FAILED_VERIFICATION = 'ProofFailedVerification',
     CONNECTION_NOT_READY = 'ConnectionNotReady',
     AGENT_CALL_FAILED = 'AgentCallFailed',
+    ISSUE_FAILED = 'IssueFailed',
+    AGENT = 'AGENT'
 }
