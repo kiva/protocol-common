@@ -1,6 +1,6 @@
 {
   "name": "protocol-common",
-  "version": "0.1.36",
+  "version": "0.1.37",
   "description": "Common code for kiva protocol webservices",
   "license": "Apache-2.0",
   "type": "commonjs",
