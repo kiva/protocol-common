@@ -40,7 +40,7 @@ export class DatadogLogger {
             winston.format.printf((info) => {
                 let logMessage = info.message;
                 if (info.metadata) {
-                    logMessage = info.message + ' - ' + inspect(info.metadata);
+                    logMessage = info.message + ' - ' + inspect(info.metadata, false, 10);
                 }
                 return `[${info.level}] ${process.pid}   - ${info.timestamp} : ${logMessage}`;
             }),
