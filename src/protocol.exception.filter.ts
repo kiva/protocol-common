@@ -29,10 +29,6 @@ export class ProtocolExceptionFilter implements ExceptionFilter {
             exception,
         };
 
-        if (exception.constructor.name === ProtocolException.name && !(exception instanceof ProtocolException)) {
-            Logger.warn('Constructor name matches but instance of doesn\'t');
-        }
-
         let protocolException: ProtocolException;
         if (exception.constructor.name === ProtocolException.name && exception.code !== ProtocolErrorCode.INTERNAL_SERVER_ERROR) {
             status = exception.httpStatus;
