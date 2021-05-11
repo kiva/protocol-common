@@ -30,7 +30,7 @@ export class ProtocolExceptionFilter implements ExceptionFilter {
         };
 
         let protocolException: ProtocolException;
-        if (exception instanceof ProtocolException && exception.code !== ProtocolErrorCode.INTERNAL_SERVER_ERROR) {
+        if (exception.constructor.name === ProtocolException.name && exception.code !== ProtocolErrorCode.INTERNAL_SERVER_ERROR) {
             status = exception.httpStatus;
             protocolException = exception;
             Logger.warn(protocolException.message, logObject);

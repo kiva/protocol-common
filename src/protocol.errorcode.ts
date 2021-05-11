@@ -53,6 +53,7 @@ export enum ProtocolErrorCode {
     TOO_MANY_ATTEMPTS = 'TooManyAttempts',
 
     // Aries related error codes
+    AGENCY_GOVERNANCE = 'AgencyGovernance',
     AGENT = 'AGENT',
     AGENT_CALL_FAILED = 'AgentCallFailed',
     CONNECTION_NOT_READY = 'ConnectionNotReady',
