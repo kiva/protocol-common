@@ -3,7 +3,7 @@
 |       |       |      |       |       |
 
 
-*([Click here](https://github.com/kiva/protocol/blob/master/PULL_REQUEST_README.md) if you don't understand these emojis)*
+*([Click here](https://github.com/kiva/protocol/blob/main/PULL_REQUEST_README.md) if you don't understand these emojis)*
 
 **What issue is this targeting?**
 
