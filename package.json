@@ -1,6 +1,6 @@
 {
   "name": "protocol-common",
-  "version": "0.1.39",
+  "version": "0.1.40",
   "description": "Common code for kiva protocol webservices",
   "license": "Apache-2.0",
   "type": "commonjs",
@@ -45,6 +45,7 @@
     "dotenv": "^8.2.0",
     "express-opentracing": "^0.1.1",
     "jaeger-client": "^3.18.1",
+    "jsonwebtoken": "^8.5.1",
     "opentracing": "^0.14.5",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.6.3",
