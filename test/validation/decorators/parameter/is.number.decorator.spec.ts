@@ -1,6 +1,6 @@
 import { ValidateParams } from '../../../../src/validation/decorators/function/validate.params.decorator';
 import { IsNumber } from '../../../../src/validation/decorators/parameter/is.number.decorator';
-import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode';
+import { ProtocolErrorCode } from '../../../../src/protocol.errorcode';
 
 class TestFixture {
     @ValidateParams
