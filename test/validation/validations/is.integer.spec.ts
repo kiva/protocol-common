@@ -44,5 +44,6 @@ describe('isInteger & isIntegerOrFail tests', () => {
         } catch (e) {
             expect(e.code).toBe(ProtocolErrorCode.VALIDATION_EXCEPTION);
             expect(e.details).toHaveLength(1);
-        }});
+        }
+    });
 });
