@@ -64,4 +64,5 @@ export enum ProtocolErrorCode {
     PROOF_FAILED_UNFULFILLED = 'ProofFailedUnfulfilled',
     PROOF_FAILED_VERIFICATION = 'ProofFailedVerification',
     PROBLEM_REPORT = 'ProblemReport',
+    INVALID_DATE = 'InvalidDate' 
 }
