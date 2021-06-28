@@ -1,5 +1,5 @@
-import { ProtocolErrorCode } from "../src/protocol.errorcode";
-import { ProtocolException } from "../src/protocol.exception";
+import { ProtocolErrorCode } from '../src/protocol.errorcode';
+import { ProtocolException } from '../src/protocol.exception';
 
 /**
  * Convenience functions for converting back and forth between various date formats and an int32 date of the form YYYYMMDD
@@ -70,7 +70,7 @@ export class DateConversion {
      * Starting with an int date converts to a string formatted YYYY-MM-DD
      */
     public static convertIntToDateString(intDate: number): string {
-        let [year, month, day] = this.convertIntToDateComponents(intDate);
+        const [year, month, day] = this.convertIntToDateComponents(intDate);
         return `${year}-${this.pad(month)}-${this.pad(day)}`;
     }
 
