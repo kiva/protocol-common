@@ -1,4 +1,4 @@
-import cryptoRandomString from 'crypto-random-string';
+import * as cryptoRandomString from 'crypto-random-string';
 
 export const LOWER_CASE_LETTERS = 'abcdefghijklmnopqrstuvwxyz';
 export const UPPER_CASE_LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
