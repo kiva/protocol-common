@@ -13,6 +13,7 @@ jobs:
       - run: npm run lint
       - run: npm test
       - run: node --version
+      - run: ./deploy.sh
       - run: |
           if [ "$CIRCLE_BRANCH" == "main" ] && [ "$CD_SKIP" != "1" ]; then
               ./publish.sh
