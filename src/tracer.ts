@@ -127,7 +127,7 @@ export function traceware(serviceName: string) {
     /** The healthz path */
     const HEALTHZ_PATH = '/healthz';
 
-    const tracer = initTracer(serviceName);
+    const tracer = this.initTracer(serviceName);
 
     return (req, res, next) => {
         // exclude readiness/liveness checks on '/healthz'

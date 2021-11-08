@@ -1,4 +1,4 @@
-import { HttpService } from '@nestjs/axios';
+import { HttpService } from '@nestjs/common';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { ProtocolException } from './protocol.exception';
 import { ProtocolErrorCode } from './protocol.errorcode';
