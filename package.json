@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "Common code for kiva protocol webservices",
   "license": "Apache-2.0",
-  "type": "commonjs",
+  "type": "module",
   "homepage": "https://github.com/kiva/protocol-common#readme",
   "repository": {
     "type": "git",
