@@ -29,8 +29,7 @@ Happy linting! 💖
         "eslint-plugin-jsdoc",
         "eslint-plugin-prefer-arrow",
         "eslint-plugin-react",
-        "@typescript-eslint",
-        "@typescript-eslint/tslint"
+        "@typescript-eslint"
     ],
     "rules": {
         "@typescript-eslint/adjacent-overload-signatures": "error",
