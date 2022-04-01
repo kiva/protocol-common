@@ -7,6 +7,6 @@ export type NonEmptyArray<T> = [T, ...T[]];
 /**
  * Typeguard for NonEmptyArray<T>. Guarantees that a given array is not an empty array.
  */
-export function isNonEmptyArray<T>(arr: T[]): arr is NonEmptyArray<T> {
+export const isNonEmptyArray = <T>(arr: T[]): arr is NonEmptyArray<T> => {
     return arr.length > 0;
-}
+};

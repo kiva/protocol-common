@@ -24,7 +24,7 @@ import { Logger } from './logger';
  * Callers should use initTracer instead to allow for different OpenTracing
  * vendors to be used.
  */
-function initJaegerTracer(serviceName: string) {
+const initJaegerTracer = (serviceName: string) => {
     const config = {
         serviceName,
         sampler: {
@@ -37,10 +37,10 @@ function initJaegerTracer(serviceName: string) {
     };
     const options = {
         logger: {
-            info(msg) {
+            info: (msg: string) => {
                 Logger.log(msg);
             },
-            error(msg) {
+            error: (msg: string) => {
                 Logger.error(msg);
             },
         },
@@ -48,7 +48,7 @@ function initJaegerTracer(serviceName: string) {
     const tracer = initTracerFromEnv(config, options);
     initGlobalTracer(tracer);
     return tracer;
-}
+};
 
 /**
  * initDatadogTracer
@@ -62,7 +62,7 @@ function initJaegerTracer(serviceName: string) {
  * Callers should use initTracer instead to allow for different OpenTracing
  * vendors to be used.
  */
-function initDatadogTracer(serviceName: string) {
+const initDatadogTracer = (serviceName: string) => {
     const tracer = ddtracer.init({
         service: serviceName,
         logger: {
@@ -74,7 +74,7 @@ function initDatadogTracer(serviceName: string) {
     });
     initGlobalTracer(tracer);
     return tracer;
-}
+};
 
 /**
  * initTracer
@@ -91,17 +91,17 @@ function initDatadogTracer(serviceName: string) {
  * Callers should consider using the traceware middleware instead which will
  * call initTracer.
  */
-export function initTracer(serviceName: string) {
+export const initTracer = (serviceName: string) => {
     switch ((process.env.TRACER || '').toLowerCase()) {
         case 'jaeger' || '': // default to jaeger
             return initJaegerTracer(serviceName);
         case 'datadog':
             return initDatadogTracer(serviceName);
         default:
-            Logger.warn(`initTracer() called without environment setup for tracing`);
+            Logger.warn('initTracer() called without environment setup for tracing');
             return null;
     }
-}
+};
 
 /**
  * traceware
@@ -122,7 +122,7 @@ export function initTracer(serviceName: string) {
  * @param serviceName is the name of the microservice as it will appear in
  * the OpenTracing vendor interface.
  */
-export function traceware(serviceName: string) {
+export const traceware = (serviceName: string) => {
 
     /** The healthz path */
     const HEALTHZ_PATH = '/healthz';
@@ -137,4 +137,4 @@ export function traceware(serviceName: string) {
         // trace calls
         middleware({tracer})(req, res, next);
       };
-}
+};

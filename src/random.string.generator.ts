@@ -14,7 +14,7 @@ export const ASCII = '!"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXY
  * @param length Desired length of the generated string. Defaults to 10.
  * @param charset Desired character set to select characters from at random. Default to Alphanumeric (a-zA-Z0-9).
  */
-export const randomString = (length: number = 10, charset: string = ALPHANUMERIC) => {
+export const randomString = (length = 10, charset: string = ALPHANUMERIC) => {
     return cryptoRandomString({ length, characters: charset });
 };
 
@@ -23,7 +23,7 @@ export const randomString = (length: number = 10, charset: string = ALPHANUMERIC
  *
  * @param length Desired length of the generated string. Defaults to 10.
  */
-export const randomHexString = (length: number = 10) => {
+export const randomHexString = (length = 10) => {
     return cryptoRandomString( { length, type: 'hex' });
 };
 
@@ -32,6 +32,6 @@ export const randomHexString = (length: number = 10) => {
  *
  * @param length Desired length of the generated string. Defaults to 10.
  */
-export const randomBase64String = (length: number = 10) => {
+export const randomBase64String = (length = 10) => {
     return cryptoRandomString( { length, type: 'base64' });
 };

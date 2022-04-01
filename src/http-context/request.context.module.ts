@@ -14,6 +14,7 @@ export class RequestContextModule implements NestModule {
 
   /**
    * Apply http-context-middleware for all routes.
+   *
    * @param consumer
    */
   configure(consumer: MiddlewareConsumer) {

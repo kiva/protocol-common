@@ -8,7 +8,7 @@ import { globalTracer, Span, FORMAT_HTTP_HEADERS } from 'opentracing';
  * The Request context for setting http request context related information like request id.
  */
 export class RequestContext {
-    public static NSID: string = '93198722-71ef-4a43-8ced-03c112636a8d';
+    public static NSID = '93198722-71ef-4a43-8ced-03c112636a8d';
     private requestId: string;
     private span: Span;
 
@@ -51,6 +51,7 @@ export class RequestContext {
 
     /**
      * Injects request id and span id headers for outbound http requests
+     *
      * @param headers is a carrier header object that is updated and returned (for composibility)
      */
     public static withTraceHeaders(headers: any) {

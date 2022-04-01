@@ -11,6 +11,7 @@ import { isValidInstanceBuilder } from '../../common/builders/is.valid.instance.
  * Example:
  *
  * class MyDto {
+ *
  *     @IsInt() id: number
  * }
  * class MyService {

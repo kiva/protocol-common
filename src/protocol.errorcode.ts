@@ -17,7 +17,7 @@ export enum ProtocolErrorCode {
     PLUGIN_ERROR = 'PluginError',
     TOO_MANY_FOUND = 'TooManyFound',
     VALIDATION_EXCEPTION = 'ValidationException',
-    
+
     // Domain-specific error codes
     MISSING_AGENT_ID = 'MissingAgentId',
     MISSING_DEVICE_DETAILS = 'MissingDeviceDetails',
@@ -43,7 +43,7 @@ export enum ProtocolErrorCode {
     INVALID_PARAMS = 'InvalidParams',
     INVALID_POSITION = 'InvalidPosition',
     INVALID_TEMPLATE_VERSION = 'InvalidTemplateVersion',
-    
+
     // SMS error codes
     NO_PHONE_NUMBER = 'NoPhoneNumber',
     OTP_EXPIRED = 'OtpExpired',
@@ -64,5 +64,5 @@ export enum ProtocolErrorCode {
     PROOF_FAILED_UNFULFILLED = 'ProofFailedUnfulfilled',
     PROOF_FAILED_VERIFICATION = 'ProofFailedVerification',
     PROBLEM_REPORT = 'ProblemReport',
-    INVALID_DATE = 'InvalidDate' 
+    INVALID_DATE = 'InvalidDate'
 }

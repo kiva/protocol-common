@@ -6,6 +6,7 @@ import { lessThanBuilder } from '../../common/builders/less.than.builder';
  *
  * Example:
  * class MyService {
+ *
  *     @ValidateParams
  *     public sampleFun(@LessThan(10) n: number) {
  *         ...

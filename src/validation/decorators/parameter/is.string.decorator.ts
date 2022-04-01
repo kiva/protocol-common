@@ -6,6 +6,7 @@ import { isStringBuilder } from '../../common/builders/is.string.builder';
  *
  * Example:
  * class MyService {
+ *
  *     @ValidateParams
  *     public sampleFun(@IsString n: string) {
  *         ...
