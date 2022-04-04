@@ -5,7 +5,7 @@ describe('greaterThan & greaterThanOrFail tests', () => {
 
     describe('greaterThan & greaterThanOrFail an integer tests', () => {
 
-        const limit: number = 10;
+        const limit = 10;
 
         it('should succeed given a valid value', () => {
             // greaterThan
@@ -67,7 +67,7 @@ describe('greaterThan & greaterThanOrFail tests', () => {
 
     describe('greaterThan & greaterThanOrFail a float tests', () => {
 
-        const limit: number = 10.1;
+        const limit = 10.1;
 
         it('should succeed given a valid value', () => {
             // greaterThan

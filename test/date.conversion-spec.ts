@@ -20,10 +20,10 @@ describe('Date conversion tests', () => {
     });
 
     it('should convert date string to int', () => {
-        let date = '2020-06-01'
+        let date = '2020-06-01';
         let int = DateConversion.convertDateStringToInt(date);
         expect(int).toBe(20200601);
-        date = '100-12-31'
+        date = '100-12-31';
         int = DateConversion.convertDateStringToInt(date);
         expect(int).toBe(1001231);
     });

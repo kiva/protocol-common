@@ -76,7 +76,6 @@ describe('Span Tests', () => {
 
 describe('Retry logic tests', () => {
     it('retry throws exception on timeout', async () => {
-        // @ts-ignore
         const retryFunction = undefined;
 
         let exceptionFound = false;
