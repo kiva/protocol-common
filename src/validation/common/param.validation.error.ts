@@ -4,7 +4,7 @@
 export class ParamValidationError {
 
     public readonly constraints: {
-        [type: string]: string
+        [type: string]: string;
     };
 
     public readonly value: any;

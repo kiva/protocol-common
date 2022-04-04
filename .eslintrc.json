@@ -74,7 +74,7 @@ Happy linting! 💖
             "error",
             {
                 "multiline": {
-                    "delimiter": "none",
+                    "delimiter": "semi",
                     "requireLast": true
                 },
                 "singleline": {

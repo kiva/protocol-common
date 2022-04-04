@@ -4,9 +4,9 @@
  */
 export interface ProtocolError {
     /** A human readable but machine usable error code */
-    code: string
+    code: string;
     /** A detailed human readable message */
-    message: string
+    message: string;
     /** Optional field to add useful details */
-    details?: any
+    details?: any;
 }
