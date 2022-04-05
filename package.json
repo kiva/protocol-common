@@ -1,6 +1,6 @@
 {
   "name": "protocol-common",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Common code for kiva protocol webservices",
   "license": "Apache-2.0",
   "type": "commonjs",
@@ -27,8 +27,8 @@
   },
   "scripts": {
     "build": "rm -rf dist && tsc",
-    "lint": "tslint -p tsconfig.json -c tslint.json",
-    "lint:fix": "tslint -p tsconfig.json -c tslint.json --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "test": "node -r dotenv/config node_modules/.bin/jest --runInBand",
     "setup": "npm link"
   },
@@ -57,11 +57,18 @@
     "@nestjs/testing": "^8.2.0",
     "@types/jest": "^27.0.2",
     "@types/supertest": "^2.0.11",
-    "supertest": "^6.1.6",
+    "@typescript-eslint/eslint-plugin": "^5.17.0",
+    "@typescript-eslint/eslint-plugin-tslint": "^5.17.0",
+    "@typescript-eslint/parser": "^5.17.0",
+    "eslint": "^8.12.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsdoc": "^38.1.4",
+    "eslint-plugin-prefer-arrow": "^1.2.3",
+    "eslint-plugin-react": "^7.29.4",
     "jest": "^27.3.1",
     "prettier": "^2.4.1",
+    "supertest": "^6.1.6",
     "ts-jest": "^27.0.7",
-    "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0"
   },
   "jest": {

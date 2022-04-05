@@ -6,6 +6,7 @@ import { isIntegerBuilder } from '../../common/builders/is.integer.builder';
  *
  * Example:
  * class MyService {
+ *
  *     @ValidateParams
  *     public sampleFun(@IsInteger n: number) {
  *         ...

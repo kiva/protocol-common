@@ -2,7 +2,7 @@ import { ParamValidation } from '../param.validation';
 import { buildParamValidation } from '../utility/builder.utility';
 import { isNumber } from 'class-validator';
 
-const errorMessageFun = (param: any) => `${param} was not a number`;
+const errorMessageFun = (param: any) => `${param as string} was not a number`;
 const validationFun = (param: any) => isNumber(param, {allowNaN: true, allowInfinity: true});
 
 /**

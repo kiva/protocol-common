@@ -14,6 +14,7 @@ import { NonEmptyArray } from '../../../non.empty.array';
  * Example:
  *
  * class MyDto1 {
+ *
  *     @IsInt() id: number
  * }
  * class MyDto2 {

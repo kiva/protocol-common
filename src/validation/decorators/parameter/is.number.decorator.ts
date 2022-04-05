@@ -6,6 +6,7 @@ import { isNumberBuilder } from '../../common/builders/is.number.builder';
  *
  * Example:
  * class MyService {
+ *
  *     @ValidateParams
  *     public sampleFun(@IsNumber n: number) {
  *         ...

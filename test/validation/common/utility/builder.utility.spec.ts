@@ -26,7 +26,7 @@ describe('Builder utility tests', () => {
             const successInput = 'foo';
             const failureInput = 'bar';
             const validationId = 'MyValidation';
-            const errorMessage = (param: any) => `${param}-induced error message`;
+            const errorMessage = (param: string) => `${param}-induced error message`;
             const validationFun = (param: any) => param === successInput;
             const paramValidation = buildParamValidation(validationId, errorMessage, validationFun);
 

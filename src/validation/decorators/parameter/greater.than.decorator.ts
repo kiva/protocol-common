@@ -6,6 +6,7 @@ import { greaterThanBuilder } from '../../common/builders/greater.than.builder';
  *
  * Example:
  * class MyService {
+ *
  *     @ValidateParams
  *     public sampleFun(@GreaterThan(10) n: number) {
  *         ...

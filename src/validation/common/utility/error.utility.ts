@@ -8,7 +8,7 @@ import { ProtocolException } from '../../../protocol.exception';
 import { ProtocolErrorCode } from '../../../protocol.errorcode';
 
 
-function convertErrorResult(result: ValidationError | ParamValidationError | any): any {
+const convertErrorResult = (result: ValidationError | ParamValidationError | any): any => {
     if (result.constraints) {
         const keys = Object.keys(result.constraints);
         result.code = keys[0] + 'Error';
@@ -21,23 +21,23 @@ function convertErrorResult(result: ValidationError | ParamValidationError | any
     }
     result.level = 'error';
     return result;
-}
+};
 
 /**
  * Given an array of ValidationErrors, format the error results and return them.
  */
-export function formatErrors(errors: ValidationError[]): any[] {
+export const formatErrors = (errors: ValidationError[]): any[] => {
     const formattedErrors = [];
     for (const error of errors) {
         const formattedError = convertErrorResult(error);
         formattedErrors.push(formattedError);
     }
     return formattedErrors;
-}
+};
 
 /**
  * Throw a ValidationException with a body containing the provided errors.
  */
-export function throwValidationException(errors: any[]): void {
+export const throwValidationException = (errors: any[]): void => {
     throw new ProtocolException(ProtocolErrorCode.VALIDATION_EXCEPTION, 'Errors on input validation', errors);
-}
+};

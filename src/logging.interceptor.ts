@@ -19,7 +19,7 @@ export class LoggingInterceptor implements NestInterceptor {
         ) || false;
         if (!autoLoggingDisabled) {
             const req = context.switchToHttp().getRequest();
-            Logger.log(`${req.method} ${req.url} ${req.headers[HttpConstants.REQUEST_ID_HEADER]}`);
+            Logger.log(`${req.method as string} ${req.url as string} ${req.headers[HttpConstants.REQUEST_ID_HEADER] as string}`);
         }
         return next.handle();
     }

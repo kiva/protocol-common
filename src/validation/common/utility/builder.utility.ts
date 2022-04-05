@@ -8,11 +8,11 @@ import { ParamValidationError } from '../param.validation.error';
  * @param errorMessage Either a simple string or a function that takes a provided validations and returns an error message.
  * @param validationFun Function that takes a provided validations and returns a true/false result to validate the validations.
  */
-export function buildParamValidation(
+export const buildParamValidation = (
     validationId: string,
     errorMessage: string | ((param: any) => string),
     validationFun: (param: any) => boolean
-): ParamValidation {
+): ParamValidation => {
     return (param: any): ParamValidationError[] => {
         const success = validationFun(param);
         const errors: any[] = [];
@@ -25,4 +25,4 @@ export function buildParamValidation(
         }
         return errors;
     };
-}
+};

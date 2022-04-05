@@ -42,7 +42,7 @@ export class DatadogLogger {
                 if (info.metadata) {
                     logMessage = info.message + ' - ' + inspect(info.metadata, false, 10);
                 }
-                return `[${info.level}] ${process.pid}   - ${info.timestamp} : ${logMessage}`;
+                return `[${info.level}] ${process.pid}   - ${info.timestamp as string} : ${logMessage}`;
             }),
         );
     }

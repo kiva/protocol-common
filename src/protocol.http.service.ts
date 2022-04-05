@@ -37,6 +37,7 @@ export class ProtocolHttpService {
      * This retries the http request if the service is down with an increasing back-off
      */
     public async httpWithRetry(observable: Observable<AxiosResponse<any>>, times: number, delay: number): Promise<any> {
+        // eslint-disable-next-line @typescript-eslint/no-misused-promises
         return new Promise((resolve, reject) => {
             let error;
             const attempt = () => {
@@ -55,10 +56,11 @@ export class ProtocolHttpService {
                     switch (e.code) {
                         case 'ENOTFOUND':
                         case 'ECONNREFUSED':
-                            Logger.warn(`Retying on ErrorCode: ${e.code}`);
+                            Logger.warn(`Retrying on ErrorCode: ${e.code as string}`);
                             times--;
                             error = e;
                             setTimeout(() => {
+                                // eslint-disable-next-line @typescript-eslint/no-floating-promises
                                 attempt();
                             }, delay);
                             // Increase the delay

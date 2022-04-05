@@ -15,9 +15,9 @@ export const isValidInstanceOfBuilder: (...paramTypes: NonEmptyArray<ClassConstr
 
     // Validate it is an object
     if (param === null || param === undefined) {
-        return [new ParamValidationError('IsObject', `Value is null or undefined`, param)];
+        return [new ParamValidationError('IsObject', 'Value is null or undefined', param)];
     } else if (Array.isArray(param)) {
-        return [new ParamValidationError('IsObject', `Value must be an object but was an array.`, param)];
+        return [new ParamValidationError('IsObject', 'Value must be an object but was an array.', param)];
     } else if (typeof param !== 'object') {
         return [new ParamValidationError('IsObject', `Value must be an object but was ${typeof param}.`, param)];
     }
