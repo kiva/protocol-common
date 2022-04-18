@@ -1,6 +1,6 @@
 {
   "name": "protocol-common",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Common code for kiva protocol webservices",
   "license": "Apache-2.0",
   "type": "commonjs",
@@ -27,6 +27,7 @@
   },
   "scripts": {
     "build": "rm -rf dist && tsc",
+    "build:simple": "tsc",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "node -r dotenv/config node_modules/.bin/jest --runInBand",
