@@ -1,4 +1,4 @@
-import { Injectable, NestInterceptor, ExecutionContext, CallHandler } from '@nestjs/common';
+import { Injectable, NestInterceptor, ExecutionContext, CallHandler, Inject } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { Logger } from './logger';
 import { HttpConstants } from './http-context/http.constants';
@@ -10,7 +10,7 @@ import { Reflector } from '@nestjs/core';
 @Injectable()
 export class LoggingInterceptor implements NestInterceptor {
 
-    constructor(private reflector: Reflector) {}
+    constructor(@Inject(Reflector.name) private reflector: Reflector) {}
 
     async intercept(context: ExecutionContext, next: CallHandler): Promise<Observable<any>> {
         const autoLoggingDisabled: boolean = this.reflector.getAllAndOverride<boolean | undefined>(

@@ -1,6 +1,6 @@
 {
   "name": "protocol-common",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Common code for kiva protocol webservices",
   "license": "Apache-2.0",
   "type": "commonjs",
@@ -27,10 +27,12 @@
   },
   "scripts": {
     "build": "rm -rf dist && tsc",
+    "build:simple": "tsc",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "node -r dotenv/config node_modules/.bin/jest --runInBand",
-    "setup": "npm link"
+    "setup": "npm run build && cp package.json dist/ && cd dist && npm link && cd ..",
+    "teardown": "cd dist && npm unlink && cd .."
   },
   "dependencies": {
     "@nestjs/axios": "^0.0.3",
