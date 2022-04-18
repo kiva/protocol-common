@@ -30,7 +30,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "node -r dotenv/config node_modules/.bin/jest --runInBand",
-    "setup": "npm link"
+    "setup": "npm run build && cp package.json dist/ && cd dist && npm link && cd ..",
+    "teardown": "cd dist && npm unlink && cd .."
   },
   "dependencies": {
     "@nestjs/axios": "^0.0.3",
