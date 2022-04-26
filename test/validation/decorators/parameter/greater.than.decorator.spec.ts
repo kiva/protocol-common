@@ -1,6 +1,10 @@
-import { ValidateParams } from '../../../../src/validation/decorators/function/validate.params.decorator';
+/* eslint-disable import/extensions */
+/**
+ * Disabling import/extensions because this runs against typescript
+ */
+import { ValidateParams } from '../../../../dist/validation/decorators/function/validate.params.decorator';
 import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode';
-import { GreaterThan } from '../../../../src/validation/decorators/parameter/greater.than.decorator';
+import { GreaterThan } from '../../../../dist/validation/decorators/parameter/greater.than.decorator';
 
 class TestFixture {
 

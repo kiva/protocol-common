@@ -1,12 +1,16 @@
+/* eslint-disable import/extensions */
+/**
+ * Disabling import/extensions because this runs against typescript
+ */
 import * as request from 'supertest';
 import { Test } from '@nestjs/testing';
-import { Logger } from '../src/logger';
-import { DatadogLogger } from '../src/datadog.logger';
+import { Logger } from '../dist/logger';
+import { DatadogLogger } from '../dist/datadog.logger';
 import { INestApplication } from '@nestjs/common';
 import { TestController, TestService } from './test.code';
-import { RequestContextModule } from '../src/http-context/request.context.module';
-import { traceware } from '../src/tracer';
-import { ProtocolUtility } from '../src/protocol.utility';
+import { RequestContextModule } from '../dist/http-context/request.context.module';
+import { traceware } from '../dist/tracer';
+import { ProtocolUtility } from '../dist/protocol.utility';
 
 describe('Sanity Tests', () => {
     let app: INestApplication;

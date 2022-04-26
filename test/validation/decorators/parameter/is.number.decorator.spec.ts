@@ -1,6 +1,10 @@
-import { ValidateParams } from '../../../../src/validation/decorators/function/validate.params.decorator';
-import { IsNumber } from '../../../../src/validation/decorators/parameter/is.number.decorator';
-import { ProtocolErrorCode } from '../../../../src/protocol.errorcode';
+/* eslint-disable import/extensions */
+/**
+ * Disabling import/extensions because this runs against typescript
+ */
+import { ValidateParams } from '../../../../dist/validation/decorators/function/validate.params.decorator';
+import { IsNumber } from '../../../../dist/validation/decorators/parameter/is.number.decorator';
+import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode';
 
 class TestFixture {
     @ValidateParams

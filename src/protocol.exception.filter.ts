@@ -1,9 +1,9 @@
 import { ExceptionFilter, Catch, ArgumentsHost, HttpException, HttpStatus, InternalServerErrorException } from '@nestjs/common';
 import { Response, Request } from 'express';
-import { ProtocolException } from './protocol.exception';
-import { Logger } from './logger';
-import { ProtocolErrorCode } from './protocol.errorcode';
-import { HttpConstants } from './http-context/http.constants';
+import { ProtocolException } from './protocol.exception.js';
+import { Logger } from './logger.js';
+import { ProtocolErrorCode } from './protocol.errorcode.js';
+import { HttpConstants } from './http-context/http.constants.js';
 
 /**
  * Standardizes error responses from the API

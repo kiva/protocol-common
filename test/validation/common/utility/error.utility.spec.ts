@@ -1,5 +1,9 @@
+/* eslint-disable import/extensions */
+/**
+ * Disabling import/extensions because this runs against typescript
+ */
 import { ValidationError } from 'class-validator';
-import { formatErrors, throwValidationException } from '../../../../src/validation/common/utility/error.utility';
+import { formatErrors, throwValidationException } from '../../../../dist/validation/common/utility/error.utility';
 import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode';
 
 describe('Error utility tests', () => {

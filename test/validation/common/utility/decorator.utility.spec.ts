@@ -1,7 +1,11 @@
-import { buildParamValidationDecorator } from '../../../../src/validation/common/utility/decorator.utility';
+/* eslint-disable import/extensions */
+/**
+ * Disabling import/extensions because this runs against typescript
+ */
+import { buildParamValidationDecorator } from '../../../../dist/validation/common/utility/decorator.utility';
 import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode';
-import { ValidateParams } from '../../../../src/validation/decorators/function/validate.params.decorator';
-import { buildParamValidation } from '../../../../src/validation/common/utility/builder.utility';
+import { ValidateParams } from '../../../../dist/validation/decorators/function/validate.params.decorator';
+import { buildParamValidation } from '../../../../dist/validation/common/utility/builder.utility';
 
 describe('Decorator utility tests', () => {
 

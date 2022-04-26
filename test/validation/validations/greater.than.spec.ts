@@ -1,4 +1,8 @@
-import { greaterThan, greaterThanOrFail } from '../../../src/validation/validations/greater.than';
+/* eslint-disable import/extensions */
+/**
+ * Disabling import/extensions because this runs against typescript
+ */
+import { greaterThan, greaterThanOrFail } from '../../../dist/validation/validations/greater.than';
 import { ProtocolErrorCode } from '../../../dist/protocol.errorcode';
 
 describe('greaterThan & greaterThanOrFail tests', () => {

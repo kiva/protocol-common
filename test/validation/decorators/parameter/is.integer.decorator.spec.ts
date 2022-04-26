@@ -1,5 +1,9 @@
-import { ValidateParams } from '../../../../src/validation/decorators/function/validate.params.decorator';
-import { IsInteger } from '../../../../src/validation/decorators/parameter/is.integer.decorator';
+/* eslint-disable import/extensions */
+/**
+ * Disabling import/extensions because this runs against typescript
+ */
+import { ValidateParams } from '../../../../dist/validation/decorators/function/validate.params.decorator';
+import { IsInteger } from '../../../../dist/validation/decorators/parameter/is.integer.decorator';
 import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode';
 
 class TestFixture {

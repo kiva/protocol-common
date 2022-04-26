@@ -1,5 +1,9 @@
-import { DateConversion } from '../src/date.conversion';
-import { ProtocolErrorCode } from '../src/protocol.errorcode';
+/* eslint-disable import/extensions */
+/**
+ * Disabling import/extensions because this runs against typescript
+ */
+import { DateConversion } from '../dist/date.conversion';
+import { ProtocolErrorCode } from '../dist/protocol.errorcode';
 
 describe('Date conversion tests', () => {
 

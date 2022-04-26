@@ -1,6 +1,10 @@
+/* eslint-disable import/extensions */
+/**
+ * Disabling import/extensions because this runs against typescript
+ */
 import { ValidateParams } from '../../../../dist/validation/decorators/function/validate.params.decorator';
-import { IsString } from '../../../../src/validation/decorators/parameter/is.string.decorator';
-import { ProtocolErrorCode } from '../../../../src/protocol.errorcode';
+import { IsString } from '../../../../dist/validation/decorators/parameter/is.string.decorator';
+import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode';
 
 class TestFixture {
     @ValidateParams

@@ -1,6 +1,10 @@
+/* eslint-disable import/extensions */
+/**
+ * Disabling import/extensions because this runs against typescript
+ */
 import { IsDate, IsInt, Length, Min } from 'class-validator';
 import { ProtocolErrorCode } from '../../../dist/protocol.errorcode';
-import { isValidInstanceOf, isValidInstanceOfOrFail } from '../../../src/validation/validations/is.valid.instance.of';
+import { isValidInstanceOf, isValidInstanceOfOrFail } from '../../../dist/validation/validations/is.valid.instance.of';
 
 class TestClass1 {
     @IsInt() id: number;

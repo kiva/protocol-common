@@ -1,5 +1,5 @@
-import { ParamValidation } from '../param.validation';
-import { buildParamValidation } from '../utility/builder.utility';
+import { ParamValidation } from '../param.validation.js';
+import { buildParamValidation } from '../utility/builder.utility.js';
 
 /**
  * Given a limit, returns a function that can be used to validate that the provided param is greater than the provided limit.

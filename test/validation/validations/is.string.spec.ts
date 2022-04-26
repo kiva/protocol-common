@@ -1,4 +1,8 @@
-import { isString, isStringOrFail } from '../../../src/validation/validations/is.string';
+/* eslint-disable import/extensions */
+/**
+ * Disabling import/extensions because this runs against typescript
+ */
+import { isString, isStringOrFail } from '../../../dist/validation/validations/is.string';
 import { ProtocolErrorCode } from '../../../dist/protocol.errorcode';
 
 describe('isString & isStringOrFai tests', () => {

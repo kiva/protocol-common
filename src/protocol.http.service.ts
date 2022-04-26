@@ -1,10 +1,10 @@
 import { HttpService } from '@nestjs/axios';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { ProtocolException } from './protocol.exception';
-import { ProtocolErrorCode } from './protocol.errorcode';
+import { ProtocolException } from './protocol.exception.js';
+import { ProtocolErrorCode } from './protocol.errorcode.js';
 import { Observable } from 'rxjs';
-import { RequestContext } from './http-context/request.context';
-import { Logger } from './logger';
+import { RequestContext } from './http-context/request.context.js';
+import { Logger } from './logger.js';
 
 /**
  * This is a wrapper around the default nestjs http service which handles retry logic and error handling

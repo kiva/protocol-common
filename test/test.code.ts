@@ -1,6 +1,10 @@
-import { Logger } from '../src/logger';
+/* eslint-disable import/extensions */
+/**
+ * Disabling import/extensions because this runs against typescript
+ */
+import { Logger } from '../dist/logger';
 import { Controller, Get, Injectable, Post, Req, Request } from '@nestjs/common';
-import { Trace } from '../src/trace.decorator';
+import { Trace } from '../dist/trace.decorator';
 
 export class TestCode {
     @Trace

@@ -1,5 +1,5 @@
-import { buildParamValidationDecorator } from '../../common/utility/decorator.utility';
-import { isValidInstanceBuilder } from '../../common/builders/is.valid.instance.builder';
+import { buildParamValidationDecorator } from '../../common/utility/decorator.utility.js';
+import { isValidInstanceBuilder } from '../../common/builders/is.valid.instance.builder.js';
 
 /**
  * Parameter decorator. Register this validations as needing to be validated against its specified type when the method is called. It will make sure

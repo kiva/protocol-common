@@ -1,7 +1,7 @@
 import * as cls from 'cls-hooked';
-import { ProtocolException } from '../protocol.exception';
-import { ProtocolErrorCode } from '../protocol.errorcode';
-import { HttpConstants } from './http.constants';
+import { ProtocolException } from '../protocol.exception.js';
+import { ProtocolErrorCode } from '../protocol.errorcode.js';
+import { HttpConstants } from './http.constants.js';
 import { globalTracer, Span, FORMAT_HTTP_HEADERS } from 'opentracing';
 
 /**

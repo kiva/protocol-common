@@ -1,5 +1,5 @@
-import { buildParamValidationDecorator } from '../../common/utility/decorator.utility';
-import { lessThanBuilder } from '../../common/builders/less.than.builder';
+import { buildParamValidationDecorator } from '../../common/utility/decorator.utility.js';
+import { lessThanBuilder } from '../../common/builders/less.than.builder.js';
 
 /**
  * Parameter decorators factory. Register this validations as needing to be validated as less than the provided limit when the method is called.

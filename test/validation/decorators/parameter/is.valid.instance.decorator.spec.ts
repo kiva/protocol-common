@@ -1,6 +1,10 @@
+/* eslint-disable import/extensions */
+/**
+ * Disabling import/extensions because this runs against typescript
+ */
 import { IsInt, Length } from 'class-validator';
-import { ValidateParams } from '../../../../src/validation/decorators/function/validate.params.decorator';
-import { IsValidInstance } from '../../../../src/validation/decorators/parameter/is.valid.instance.decorator';
+import { ValidateParams } from '../../../../dist/validation/decorators/function/validate.params.decorator';
+import { IsValidInstance } from '../../../../dist/validation/decorators/parameter/is.valid.instance.decorator';
 import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode';
 
 class TestClass1 {

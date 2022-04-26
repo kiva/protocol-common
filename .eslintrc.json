@@ -6,7 +6,7 @@ It represents the closest reasonable ESLint configuration to this
 project's original TSLint configuration.
 
 We recommend eventually switching this configuration to extend from
-the recommended rulesets in typescript-eslint. 
+the recommended rulesets in typescript-eslint.
 https://github.com/typescript-eslint/tslint-to-eslint-config/blob/master/docs/FAQs.md
 
 Happy linting! 💖
@@ -147,6 +147,14 @@ Happy linting! 💖
         "id-denylist": "off",
         "id-match": "off",
         "import/order": "off",
+        "import/no-relative-packages": "error",
+        "import/extensions": [
+            "error",
+            {
+                "js": "ignorePackages",
+                "json": "ignorePackages"
+            }
+        ],
         "indent": "off",
         "jsdoc/check-alignment": "error",
         "jsdoc/check-indentation": "off",

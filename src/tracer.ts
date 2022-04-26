@@ -1,8 +1,8 @@
 import { initGlobalTracer } from 'opentracing';
-import { initTracerFromEnv } from 'jaeger-client';
-import { tracer as ddtracer } from 'dd-trace';
+import jaeger from 'jaeger-client';
+import ddTrace from 'dd-trace';
 import middleware from 'express-opentracing';
-import { Logger } from './logger';
+import { Logger } from './logger.js';
 
 /**
  * tracer
@@ -45,7 +45,7 @@ const initJaegerTracer = (serviceName: string) => {
             },
         },
     };
-    const tracer = initTracerFromEnv(config, options);
+    const tracer = jaeger.initTracerFromEnv(config, options);
     initGlobalTracer(tracer);
     return tracer;
 };
@@ -63,7 +63,7 @@ const initJaegerTracer = (serviceName: string) => {
  * vendors to be used.
  */
 const initDatadogTracer = (serviceName: string) => {
-    const tracer = ddtracer.init({
+    const tracer = ddTrace.init({
         service: serviceName,
         logger: {
             debug: message => Logger.log(message),

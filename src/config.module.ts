@@ -1,4 +1,4 @@
-import { Constants } from './constants';
+import { Constants } from './constants.js';
 
 /**
  * Reads input data to set environment variables.

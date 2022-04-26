@@ -1,5 +1,9 @@
+/* eslint-disable import/extensions */
+/**
+ * Disabling import/extensions because this runs against typescript
+ */
 import { ProtocolErrorCode } from '../../../dist/protocol.errorcode';
-import { lessThan, lessThanOrFail } from '../../../src/validation/validations/less.than';
+import { lessThan, lessThanOrFail } from '../../../dist/validation/validations/less.than';
 
 describe('lessThan & lessThanOrFail tests', () => {
 

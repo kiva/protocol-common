@@ -1,9 +1,9 @@
 {
   "name": "protocol-common",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Common code for kiva protocol webservices",
   "license": "Apache-2.0",
-  "type": "commonjs",
+  "type": "module",
   "homepage": "https://github.com/kiva/protocol-common#readme",
   "repository": {
     "type": "git",
@@ -17,8 +17,10 @@
     "hyperledger"
   ],
   "author": "protocol-services",
-  "main": "dist/main.js",
-  "types": "main.d.ts",
+  "exports": {
+    ".": "./index.js",
+    "./validation": "./validation/index.js"
+  },
   "files": [
     "*"
   ],
@@ -26,12 +28,12 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "build": "rm -rf dist && tsc",
+    "build": "rm -rf dist && tsc && cp package.json dist/",
     "build:simple": "tsc",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "node -r dotenv/config node_modules/.bin/jest --runInBand",
-    "setup": "npm run build && cp package.json dist/ && cd dist && npm link && cd ..",
+    "setup": "npm run build && cd dist && npm link && cd ..",
     "teardown": "cd dist && npm unlink && cd .."
   },
   "dependencies": {
@@ -45,7 +47,7 @@
     "cls-hooked": "^4.2.2",
     "crypto-js": "^4.1.1",
     "crypto-random-string": "^4.0.0",
-    "dd-trace": "^1.5.1",
+    "dd-trace": "^2.5.0",
     "dotenv": "^10.0.0",
     "express-opentracing": "^0.1.1",
     "jaeger-client": "^3.19.0",
