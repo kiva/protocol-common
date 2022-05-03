@@ -35,13 +35,13 @@ export class TestController {
 
     @Post('/noNestedCall')
     @Trace
-    public async noNestedPostCall(@Req() req: Request) : Promise<any> {
+    public async noNestedPostCall() : Promise<any> {
         return 'completed';
     }
 
     @Post('/nestedCall')
     @Trace
-    public async nestedPostCall(@Req() req: Request) : Promise<any> {
+    public async nestedPostCall() : Promise<any> {
         return 'completed';
     }
 }

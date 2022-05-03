@@ -20,7 +20,7 @@ export class ProtocolExceptionFilter implements ExceptionFilter {
         const ctx = host.switchToHttp();
         const response = ctx.getResponse<Response>();
         const request = ctx.getRequest<Request>();
-        const url = `${request.method as string} ${request.url as string}`;
+        const url = `${request.method} ${request.url}`;
         let status: number;
         const logObject: any = {
             reqid: request.headers[HttpConstants.REQUEST_ID_HEADER],
