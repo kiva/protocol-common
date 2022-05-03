@@ -2,8 +2,8 @@
 /**
  * Disabling import/extensions because this runs against typescript
  */
-import { isString, isStringOrFail } from '../../../dist/validation/validations/is.string';
-import { ProtocolErrorCode } from '../../../dist/protocol.errorcode';
+import { isString, isStringOrFail } from '../../../dist/validation/validations/is.string.js';
+import { ProtocolErrorCode } from '../../../dist/protocol.errorcode.js';
 
 describe('isString & isStringOrFai tests', () => {
     it('should succeed given a valid value', () => {

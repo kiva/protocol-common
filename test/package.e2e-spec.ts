@@ -4,13 +4,13 @@
  */
 import * as request from 'supertest';
 import { Test } from '@nestjs/testing';
-import { Logger } from '../dist/logger';
-import { DatadogLogger } from '../dist/datadog.logger';
+import { Logger } from '../dist/logger.js';
+import { DatadogLogger } from '../dist/datadog.logger.js';
 import { INestApplication } from '@nestjs/common';
 import { TestController, TestService } from './test.code';
-import { RequestContextModule } from '../dist/http-context/request.context.module';
-import { traceware } from '../dist/tracer';
-import { ProtocolUtility } from '../dist/protocol.utility';
+import { RequestContextModule } from '../dist/http/request.context.module.js';
+import { traceware } from '../dist/tracer.js';
+import { ProtocolUtility } from '../dist/protocol.utility.js';
 
 describe('Sanity Tests', () => {
     let app: INestApplication;

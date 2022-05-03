@@ -2,8 +2,8 @@
 /**
  * Disabling import/extensions because this runs against typescript
  */
-import { greaterThan, greaterThanOrFail } from '../../../dist/validation/validations/greater.than';
-import { ProtocolErrorCode } from '../../../dist/protocol.errorcode';
+import { greaterThan, greaterThanOrFail } from '../../../dist/validation/validations/greater.than.js';
+import { ProtocolErrorCode } from '../../../dist/protocol.errorcode.js';
 
 describe('greaterThan & greaterThanOrFail tests', () => {
 

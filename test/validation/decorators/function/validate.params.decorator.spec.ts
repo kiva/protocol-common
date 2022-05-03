@@ -3,12 +3,12 @@
  * Disabling import/extensions because this runs against typescript
  */
 import { IsInt, IsNumber } from 'class-validator';
-import { ValidateParams } from '../../../../dist/validation/decorators/function/validate.params.decorator';
-import { IsValidInstance } from '../../../../dist/validation/decorators/parameter/is.valid.instance.decorator';
-import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode';
-import { GreaterThan } from '../../../../dist/validation/decorators/parameter/greater.than.decorator';
-import { LessThan } from '../../../../dist/validation/decorators/parameter/less.than.decorator';
-import { IsInteger } from '../../../../dist/validation/decorators/parameter/is.integer.decorator';
+import { ValidateParams } from '../../../../dist/validation/decorators/function/validate.params.decorator.js';
+import { IsValidInstance } from '../../../../dist/validation/decorators/parameter/is.valid.instance.decorator.js';
+import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode.js';
+import { GreaterThan } from '../../../../dist/validation/decorators/parameter/greater.than.decorator.js';
+import { LessThan } from '../../../../dist/validation/decorators/parameter/less.than.decorator.js';
+import { IsInteger } from '../../../../dist/validation/decorators/parameter/is.integer.decorator.js';
 
 class TestClass1 {
     @IsInt() id: number;

@@ -2,8 +2,8 @@
 /**
  * Disabling import/extensions because this runs against typescript
  */
-import { ParamValidationError } from '../../../../dist/validation/common/param.validation.error';
-import { buildParamValidation } from '../../../../dist/validation/common/utility/builder.utility';
+import { ParamValidationError } from '../../../../dist/validation/common/param.validation.error.js';
+import { buildParamValidation } from '../../../../dist/validation/common/utility/builder.utility.js';
 
 describe('Builder utility tests', () => {
 

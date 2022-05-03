@@ -3,8 +3,8 @@
  * Disabling import/extensions because this runs against typescript
  */
 import { ValidationError } from 'class-validator';
-import { formatErrors, throwValidationException } from '../../../../dist/validation/common/utility/error.utility';
-import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode';
+import { formatErrors, throwValidationException } from '../../../../dist/validation/common/utility/error.utility.js';
+import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode.js';
 
 describe('Error utility tests', () => {
 

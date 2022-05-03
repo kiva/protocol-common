@@ -2,10 +2,10 @@
 /**
  * Disabling import/extensions because this runs against typescript
  */
-import { buildParamValidationDecorator } from '../../../../dist/validation/common/utility/decorator.utility';
-import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode';
-import { ValidateParams } from '../../../../dist/validation/decorators/function/validate.params.decorator';
-import { buildParamValidation } from '../../../../dist/validation/common/utility/builder.utility';
+import { buildParamValidationDecorator } from '../../../../dist/validation/common/utility/decorator.utility.js';
+import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode.js';
+import { ValidateParams } from '../../../../dist/validation/decorators/function/validate.params.decorator.js';
+import { buildParamValidation } from '../../../../dist/validation/common/utility/builder.utility.js';
 
 describe('Decorator utility tests', () => {
 

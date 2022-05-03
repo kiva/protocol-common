@@ -3,8 +3,8 @@
  * Disabling import/extensions because this runs against typescript
  */
 import { IsDate, IsInt, Length, Min } from 'class-validator';
-import { ProtocolErrorCode } from '../../../dist/protocol.errorcode';
-import { isValidInstanceOf, isValidInstanceOfOrFail } from '../../../dist/validation/validations/is.valid.instance.of';
+import { ProtocolErrorCode } from '../../../dist/protocol.errorcode.js';
+import { isValidInstanceOf, isValidInstanceOfOrFail } from '../../../dist/validation/validations/is.valid.instance.of.js';
 
 class TestClass1 {
     @IsInt() id: number;
@@ -52,7 +52,7 @@ describe('isValidInstanceOf & isValidInstanceOfOrFail tests', () => {
             };
 
             // isValidInstanceOf
-            const errors = isValidInstanceOf(obj, TestClass1);
+            const errors: any[] = isValidInstanceOf(obj, TestClass1);
             expect(errors).toHaveLength(1);
             let classErrors = errors.find((error) => Object.keys(error)[0] === TestClass1.name).TestClass1;
             expect(classErrors).toHaveLength(1);
@@ -76,7 +76,7 @@ describe('isValidInstanceOf & isValidInstanceOfOrFail tests', () => {
             };
 
             // isValidInstanceOf
-            const errors = isValidInstanceOf(obj, TestClass1);
+            const errors: any[] = isValidInstanceOf(obj, TestClass1);
             expect(errors).toHaveLength(1);
             let classErrors = errors.find((error) => Object.keys(error)[0] === TestClass1.name).TestClass1;
             expect(classErrors).toHaveLength(2);
@@ -121,7 +121,7 @@ describe('isValidInstanceOf & isValidInstanceOfOrFail tests', () => {
             };
 
             // isValidInstanceOf
-            const errors = isValidInstanceOf(obj, TestClass1, TestClass2);
+            const errors: any[] = isValidInstanceOf(obj, TestClass1, TestClass2);
             expect(errors).toHaveLength(2);
             let class1Errors = errors.find((error) => Object.keys(error)[0] === TestClass1.name).TestClass1;
             expect(class1Errors).toHaveLength(1);

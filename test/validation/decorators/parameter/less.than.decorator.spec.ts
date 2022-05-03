@@ -2,9 +2,9 @@
 /**
  * Disabling import/extensions because this runs against typescript
  */
-import { ValidateParams } from '../../../../dist/validation/decorators/function/validate.params.decorator';
-import { LessThan } from '../../../../dist/validation/decorators/parameter/less.than.decorator';
-import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode';
+import { ValidateParams } from '../../../../dist/validation/decorators/function/validate.params.decorator.js';
+import { LessThan } from '../../../../dist/validation/decorators/parameter/less.than.decorator.js';
+import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode.js';
 
 class TestFixture {
 
