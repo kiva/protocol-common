@@ -1,7 +1,7 @@
 import { LoggerService, Logger as NestLogger } from '@nestjs/common';
 import { inspect } from 'util';
-import { HttpConstants } from './http-context/http.constants.js';
-import { RequestContext } from './http-context/request.context.js';
+import { HttpConstants } from './http/http.constants.js';
+import { RequestContext } from './http/request.context.js';
 
 /**
  * The default nestjs logger doesn't call the underlying logger transport properly when called statically, so this is my light-weight implementation

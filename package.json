@@ -28,8 +28,9 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "build": "rm -rf dist && tsc && cp package.json dist/",
-    "build:simple": "tsc",
+    "build": "rm -rf dist && npm run build:js && npm run build:dts && cp package.json dist/",
+    "build:js": "tsc",
+    "build:dts": "dts-bundle-generator --config dts.json",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "node -r dotenv/config node_modules/.bin/jest --runInBand",
@@ -37,11 +38,11 @@
     "teardown": "cd dist && npm unlink && cd .."
   },
   "dependencies": {
-    "@nestjs/axios": "^0.0.3",
+    "@nestjs/axios": "^0.0.7",
     "@nestjs/common": "^8.2.0",
     "@nestjs/core": "^8.2.0",
     "@nestjs/platform-express": "^8.2.0",
-    "axios": "^0.24.0",
+    "axios": "^0.26.0",
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",
     "cls-hooked": "^4.2.2",
@@ -58,12 +59,14 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
+    "@types/express": "^4.17.13",
     "@nestjs/testing": "^8.2.0",
     "@types/jest": "^27.0.2",
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^5.17.0",
     "@typescript-eslint/eslint-plugin-tslint": "^5.17.0",
     "@typescript-eslint/parser": "^5.17.0",
+    "dts-bundle-generator": "^6.9.0",
     "eslint": "^8.12.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jsdoc": "^38.1.4",

@@ -3,7 +3,7 @@ import { Response, Request } from 'express';
 import { ProtocolException } from './protocol.exception.js';
 import { Logger } from './logger.js';
 import { ProtocolErrorCode } from './protocol.errorcode.js';
-import { HttpConstants } from './http-context/http.constants.js';
+import { HttpConstants } from './http/http.constants.js';
 
 /**
  * Standardizes error responses from the API

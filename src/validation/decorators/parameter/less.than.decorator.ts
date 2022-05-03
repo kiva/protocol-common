@@ -2,7 +2,7 @@ import { buildParamValidationDecorator } from '../../common/utility/decorator.ut
 import { lessThanBuilder } from '../../common/builders/less.than.builder.js';
 
 /**
- * Parameter decorators factory. Register this validations as needing to be validated as less than the provided limit when the method is called.
+ * Parameter decorators factory. Register this validation as needing to be validated as less than the provided limit when the method is called.
  *
  * Example:
  * class MyService {

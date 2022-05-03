@@ -2,7 +2,7 @@ import { buildParamValidationDecorator } from '../../common/utility/decorator.ut
 import { isIntegerBuilder } from '../../common/builders/is.integer.builder.js';
 
 /**
- * Parameter decorators. Register this validations as needing to be validated as being an integer when the method is called.
+ * Parameter decorators. Register this validation as needing to be validated as being an integer when the method is called.
  *
  * Example:
  * class MyService {
