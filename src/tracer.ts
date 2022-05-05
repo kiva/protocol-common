@@ -2,7 +2,7 @@ import { initGlobalTracer } from 'opentracing';
 import jaeger from 'jaeger-client';
 import ddTrace from 'dd-trace';
 import middleware from 'express-opentracing';
-import { Logger } from './logger.js';
+import { Logger } from '@nestjs/common';
 
 /**
  * tracer
@@ -66,8 +66,8 @@ const initDatadogTracer = (serviceName: string) => {
     const tracer = ddTrace.init({
         service: serviceName,
         logger: {
-            debug: message => Logger.log(message),
-            info: message => Logger.info(message),
+            debug: message => Logger.debug(message),
+            info: message => Logger.log(message),
             warn: message => Logger.warn(message),
             error: err => Logger.error(err.toString()),
         },

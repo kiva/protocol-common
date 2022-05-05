@@ -52,17 +52,18 @@
     "dotenv": "^10.0.0",
     "express-opentracing": "^0.1.1",
     "jaeger-client": "^3.19.0",
+    "nestjs-pino": "^2.5.2",
     "opentracing": "^0.14.5",
+    "pino": "^7.11.0",
+    "pino-pretty": "^7.6.1",
+    "pino-http": "^7.0.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.4.0",
-    "typescript": "^4.4.4",
-    "winston": "^3.7.2",
-    "logform": "^2.4.0"
+    "typescript": "^4.4.4"
   },
   "devDependencies": {
-    "@types/express": "^4.17.13",
     "@nestjs/testing": "^8.2.0",
-    "@types/logform": "^1.10.1",
+    "@types/express": "^4.17.13",
     "@types/jest": "^27.0.2",
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^5.17.0",

@@ -4,23 +4,24 @@
  */
 import * as request from 'supertest';
 import { Test } from '@nestjs/testing';
-import { Logger } from '../dist/logger.js';
-import { DatadogLogger } from '../dist/datadog.logger.js';
-import { INestApplication } from '@nestjs/common';
+import { INestApplication, Logger } from '@nestjs/common';
 import { TestController, TestService } from './test.code';
 import { RequestContextModule } from '../dist/http/request.context.module.js';
 import { traceware } from '../dist/tracer.js';
 import { ProtocolUtility } from '../dist/protocol.utility.js';
+import { ProtocolLogger } from '../dist/protocol.logger.js';
+import { ProtocolLoggerModule } from '../dist/protocol.logger.module.js';
 
 describe('Sanity Tests', () => {
     let app: INestApplication;
 
     beforeAll(async () => {
-        const moduleFixture = await Test.createTestingModule({}).compile();
+        const moduleFixture = await Test.createTestingModule({
+            imports: [ProtocolLoggerModule]
+        }).compile();
 
         app = moduleFixture.createNestApplication();
-        const logger = new Logger(DatadogLogger.getLogger());
-        app.useLogger(logger);
+        app.useLogger(app.get(ProtocolLogger));
     });
 
     it('a sanity test using the logger', () => {
@@ -37,13 +38,13 @@ describe('Span Tests', () => {
 
     beforeAll(async () => {
        const moduleRef = await Test.createTestingModule({
-           imports: [RequestContextModule],
+           imports: [RequestContextModule, ProtocolLoggerModule],
            controllers: [TestController],
            providers: [TestService],
        }).compile();
 
        app = moduleRef.createNestApplication();
-       const logger = new Logger(DatadogLogger.getLogger());
+       const logger = new Logger(app.get(ProtocolLogger));
        app.useLogger(logger);
        app.use(traceware('test'));
        await app.init();

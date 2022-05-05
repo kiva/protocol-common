@@ -2,8 +2,7 @@
 /**
  * Disabling import/extensions because this runs against typescript
  */
-import { Logger } from '../dist/logger.js';
-import { Controller, Get, Injectable, Post } from '@nestjs/common';
+import { Controller, Get, Injectable, Logger, Post } from '@nestjs/common';
 import { Trace } from '../dist/trace.decorator.js';
 
 export class TestCode {

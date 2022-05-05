@@ -1,7 +1,6 @@
-import { ExceptionFilter, Catch, ArgumentsHost, HttpException, HttpStatus, InternalServerErrorException } from '@nestjs/common';
+import { ExceptionFilter, Catch, ArgumentsHost, HttpException, HttpStatus, InternalServerErrorException, Logger } from '@nestjs/common';
 import { Response, Request } from 'express';
 import { ProtocolException } from './protocol.exception.js';
-import { Logger } from './logger.js';
 import { ProtocolErrorCode } from './protocol.errorcode.js';
 import { HttpConstants } from './http/http.constants.js';
 

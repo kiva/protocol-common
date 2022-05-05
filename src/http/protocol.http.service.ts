@@ -4,7 +4,7 @@ import { ProtocolException } from '../protocol.exception.js';
 import { ProtocolErrorCode } from '../protocol.errorcode.js';
 import { Observable } from 'rxjs';
 import { RequestContext } from './request.context.js';
-import { Logger } from '../logger.js';
+import { Logger } from '@nestjs/common';
 
 /**
  * This is a wrapper around the default nestjs http service which handles retry logic and error handling
