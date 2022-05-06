@@ -15,7 +15,7 @@ class TestClass1 {
 class TestFixture {
     @ValidateParams
     testFn1(@IsValidInstance obj: TestClass1) {
-        return true;
+        return obj.id;
     }
 }
 
@@ -29,7 +29,7 @@ describe('@IsValidInstance decorators tests', () => {
             name: 'foobar'
         };
         const result = fixture.testFn1(obj);
-        expect(result).toBe(true);
+        expect(result).toBe(obj.id);
     });
 
     it('should succeed given valid fields of a properly typed object', () => {
@@ -37,7 +37,7 @@ describe('@IsValidInstance decorators tests', () => {
         obj.id = 1;
         obj.name = 'foobar';
         const result = fixture.testFn1(obj);
-        expect(result).toBe(true);
+        expect(result).toBe(obj.id);
     });
 
     it('should fail if provided an instance with one invalid field',  () => {

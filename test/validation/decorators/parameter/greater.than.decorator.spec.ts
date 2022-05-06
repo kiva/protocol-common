@@ -10,12 +10,12 @@ class TestFixture {
 
     @ValidateParams
     testFn1(@GreaterThan(10) n: number) {
-        return true;
+        return n;
     }
 
     @ValidateParams
     testFn2(@GreaterThan(10.1) n: number) {
-        return true;
+        return n;
     }
 }
 
@@ -26,9 +26,9 @@ describe('@GreaterThan decorators tests', () => {
     describe('@GreaterThan an integer tests', () => {
 
         it('should succeed given a valid value', () => {
-            expect(fixture.testFn1(11)).toBe(true); // simple
-            expect(fixture.testFn1(10.1)).toBe(true); // non-integer
-            expect(fixture.testFn1(Number.MAX_SAFE_INTEGER)).toBe(true); // max value
+            expect(fixture.testFn1(11)).toBe(11); // simple
+            expect(fixture.testFn1(10.1)).toBe(10.1); // non-integer
+            expect(fixture.testFn1(Number.MAX_SAFE_INTEGER)).toBe(Number.MAX_SAFE_INTEGER); // max value
         });
 
         it('should fail given a number less than the target', () => {
@@ -65,9 +65,9 @@ describe('@GreaterThan decorators tests', () => {
     describe('@GreaterThan a float tests', () => {
 
         it('should succeed given a valid value', () => {
-            expect(fixture.testFn2(11)).toBe(true); // simple
-            expect(fixture.testFn2(10.2)).toBe(true); // non-integer
-            expect(fixture.testFn2(Number.MAX_SAFE_INTEGER)).toBe(true); // max value
+            expect(fixture.testFn2(11)).toBe(11); // simple
+            expect(fixture.testFn2(10.2)).toBe(10.2); // non-integer
+            expect(fixture.testFn2(Number.MAX_SAFE_INTEGER)).toBe(Number.MAX_SAFE_INTEGER); // max value
         });
 
         it('should fail given an integer less than the target', () => {

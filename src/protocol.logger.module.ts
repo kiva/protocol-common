@@ -17,7 +17,7 @@ const getTransport = () => {
     } else {
         return undefined;
     }
-}
+};
 
 @Module({
     imports: [LoggerModule.forRoot({

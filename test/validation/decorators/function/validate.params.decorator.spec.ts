@@ -22,12 +22,12 @@ class TestFixture {
 
     @ValidateParams
     testFn1(@IsValidInstance obj: TestClass1) {
-        return true;
+        return obj.id;
     }
 
     @ValidateParams
     testFn2(n: number, @IsValidInstance obj: TestClass1) {
-        return true;
+        return obj.id;
     }
 
     @ValidateParams
@@ -35,14 +35,14 @@ class TestFixture {
         @GreaterThan(0) n: number,
         @IsValidInstance obj2: TestClass2
     ) {
-        return true;
+        return obj2.price;
     }
 
     @ValidateParams
     testFn4(
         @IsInteger @GreaterThan(0) @LessThan(100) n: number
     ) {
-        return true;
+        return n;
     }
 }
 
@@ -57,7 +57,7 @@ describe('@ValidateParams tests', () => {
                 id: 1
             };
             const result = fixture.testFn1(obj);
-            expect(result).toBe(true);
+            expect(result).toBe(obj.id);
         });
 
         it('should fail if provided invalid params',  () => {
@@ -81,7 +81,7 @@ describe('@ValidateParams tests', () => {
                 id: 1
             };
             const result = fixture.testFn2(1, obj);
-            expect(result).toBe(true);
+            expect(result).toBe(obj.id);
         });
 
         it('should fail if provided an invalid param that needs validation', () => {
@@ -105,7 +105,7 @@ describe('@ValidateParams tests', () => {
                 price: 10.1
             };
             const result = fixture.testFn3(2, obj2);
-            expect(result).toBe(true);
+            expect(result).toBe(obj2.price);
         });
 
         it('should fail if just one param is invalid', () => {
@@ -138,8 +138,9 @@ describe('@ValidateParams tests', () => {
     describe('A function with a validations that expects multiple validations', () => {
 
         it('should succeed given a valid param', () => {
-            const result = fixture.testFn4(50);
-            expect(result).toBe(true);
+            const n = 50;
+            const result = fixture.testFn4(n);
+            expect(result).toBe(n);
         });
 
         it('should fail if a param that fails one validation', () => {

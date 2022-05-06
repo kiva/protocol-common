@@ -19,13 +19,13 @@ describe('Decorator utility tests', () => {
         class MyClass {
             @ValidateParams
             myFunction(@MyDecorator param: string) {
-                return true;
+                return param;
             }
         }
 
         it('should build a decorators that can be used to mark a validations for validation', () => {
             const instance = new MyClass();
-            expect(instance.myFunction(successInput)).toBe(true);
+            expect(instance.myFunction(successInput)).toBe(successInput);
             try {
                 instance.myFunction(failureInput);
                 fail('Expected a ValidationException error to be thrown');

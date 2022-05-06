@@ -9,7 +9,7 @@ import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode.js';
 class TestFixture {
     @ValidateParams
     testFn(@IsInteger n: number) {
-        return true;
+        return n;
     }
 }
 
@@ -18,11 +18,11 @@ describe('@IsInteger tests', () => {
     const fixture = new TestFixture();
 
     it('should succeed given a valid value', () => {
-        expect(fixture.testFn(1)).toBe(true); // simple
-        expect(fixture.testFn(0)).toBe(true); // zero
-        expect(fixture.testFn(-1)).toBe(true); // negative
-        expect(fixture.testFn(Number.MAX_SAFE_INTEGER)).toBe(true); // max value
-        expect(fixture.testFn(Number.MIN_SAFE_INTEGER)).toBe(true); // min value
+        expect(fixture.testFn(1)).toBe(1); // simple
+        expect(fixture.testFn(0)).toBe(0); // zero
+        expect(fixture.testFn(-1)).toBe(-1); // negative
+        expect(fixture.testFn(Number.MAX_SAFE_INTEGER)).toBe(Number.MAX_SAFE_INTEGER); // max value
+        expect(fixture.testFn(Number.MIN_SAFE_INTEGER)).toBe(Number.MIN_SAFE_INTEGER); // min value
     });
 
     it('should fail given a float', () => {

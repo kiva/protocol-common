@@ -9,21 +9,21 @@ import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode.js';
 class TestFixture {
     @ValidateParams
     testFn(@IsNumber n: number) {
-        return true;
+        return n;
     }
 }
 describe('@IsNumber tests', () => {
     const fixture = new TestFixture();
 
     it('should succeed given a valid value', () => {
-        expect(fixture.testFn(1)).toBe(true);
-        expect(fixture.testFn(0)).toBe(true);
-        expect(fixture.testFn(-1)).toBe(true);
-        expect(fixture.testFn(Number.MAX_SAFE_INTEGER)).toBe(true);
-        expect(fixture.testFn(Number.MIN_SAFE_INTEGER)).toBe(true);
-        expect(fixture.testFn(1.1)).toBe(true);
-        expect(fixture.testFn(NaN)).toBe(true);
-        expect(fixture.testFn(Infinity)).toBe(true);
+        expect(fixture.testFn(1)).toBe(1);
+        expect(fixture.testFn(0)).toBe(0);
+        expect(fixture.testFn(-1)).toBe(-1);
+        expect(fixture.testFn(Number.MAX_SAFE_INTEGER)).toBe(Number.MAX_SAFE_INTEGER);
+        expect(fixture.testFn(Number.MIN_SAFE_INTEGER)).toBe(Number.MIN_SAFE_INTEGER);
+        expect(fixture.testFn(1.1)).toBe(1.1);
+        expect(fixture.testFn(NaN)).toBe(NaN);
+        expect(fixture.testFn(Infinity)).toBe(Infinity);
     });
 
     it('should fail given a non-number input', () => {
