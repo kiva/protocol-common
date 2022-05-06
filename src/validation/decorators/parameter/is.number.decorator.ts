@@ -1,8 +1,8 @@
-import { buildParamValidationDecorator } from '../../common/utility/decorator.utility';
-import { isNumberBuilder } from '../../common/builders/is.number.builder';
+import { buildParamValidationDecorator } from '../../common/utility/decorator.utility.js';
+import { isNumberBuilder } from '../../common/builders/is.number.builder.js';
 
 /**
- * Parameter decorators. Register this validations as needing to be validated as being a number when the method is called.
+ * Parameter decorators. Register this validation as needing to be validated as being a number when the method is called.
  *
  * Example:
  * class MyService {

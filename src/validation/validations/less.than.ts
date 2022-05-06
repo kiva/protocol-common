@@ -1,5 +1,5 @@
-import { lessThanBuilder } from '../common/builders/less.than.builder';
-import { throwValidationException } from '../common/utility/error.utility';
+import { lessThanBuilder } from '../common/builders/less.than.builder.js';
+import { throwValidationException } from '../common/utility/error.utility.js';
 
 /**
  * Verify that the provided param is less than the provided limit. If validation fails, then it will return an array of a single validation error.

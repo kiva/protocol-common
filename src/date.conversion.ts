@@ -1,5 +1,5 @@
-import { ProtocolErrorCode } from './protocol.errorcode';
-import { ProtocolException } from './protocol.exception';
+import { ProtocolErrorCode } from './protocol.errorcode.js';
+import { ProtocolException } from './protocol.exception.js';
 
 /**
  * Convenience functions for converting back and forth between various date formats and an int32 date of the form YYYYMMDD

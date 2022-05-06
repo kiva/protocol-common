@@ -1,4 +1,4 @@
-import { ProtocolError } from './protocol.error.interface';
+import { ProtocolError } from './protocol.error.interface.js';
 import { HttpStatus } from '@nestjs/common';
 
 export class ProtocolException implements ProtocolError {

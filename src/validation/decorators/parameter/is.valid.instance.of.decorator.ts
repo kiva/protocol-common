@@ -1,10 +1,10 @@
-import { buildParamValidationDecorator } from '../../common/utility/decorator.utility';
+import { buildParamValidationDecorator } from '../../common/utility/decorator.utility.js';
 import { ClassConstructor } from 'class-transformer';
-import { isValidInstanceOfBuilder } from '../../common/builders/is.valid.instance.of.builder';
-import { NonEmptyArray } from '../../../non.empty.array';
+import { isValidInstanceOfBuilder } from '../../common/builders/is.valid.instance.of.builder.js';
+import { NonEmptyArray } from '../../../non.empty.array.js';
 
 /**
- * Parameter decorator. Register this validations as needing to be validated against one of several specified types when the method is called. It will
+ * Parameter decorator. Register this validation as needing to be validated against one of several specified types when the method is called. It will
  * make sure the parameter is indeed an instance of one of the specified type. Additionally, it will validate any property validations applied via
  * class-validator.
  *

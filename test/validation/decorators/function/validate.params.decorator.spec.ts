@@ -1,10 +1,14 @@
+/* eslint-disable import/extensions */
+/**
+ * Disabling import/extensions because this runs against typescript
+ */
 import { IsInt, IsNumber } from 'class-validator';
-import { ValidateParams } from '../../../../src/validation/decorators/function/validate.params.decorator';
-import { IsValidInstance } from '../../../../src/validation/decorators/parameter/is.valid.instance.decorator';
-import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode';
-import { GreaterThan } from '../../../../src/validation/decorators/parameter/greater.than.decorator';
-import { LessThan } from '../../../../src/validation/decorators/parameter/less.than.decorator';
-import { IsInteger } from '../../../../src/validation/decorators/parameter/is.integer.decorator';
+import { ValidateParams } from '../../../../dist/validation/decorators/function/validate.params.decorator.js';
+import { IsValidInstance } from '../../../../dist/validation/decorators/parameter/is.valid.instance.decorator.js';
+import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode.js';
+import { GreaterThan } from '../../../../dist/validation/decorators/parameter/greater.than.decorator.js';
+import { LessThan } from '../../../../dist/validation/decorators/parameter/less.than.decorator.js';
+import { IsInteger } from '../../../../dist/validation/decorators/parameter/is.integer.decorator.js';
 
 class TestClass1 {
     @IsInt() id: number;
@@ -18,12 +22,12 @@ class TestFixture {
 
     @ValidateParams
     testFn1(@IsValidInstance obj: TestClass1) {
-        return true;
+        return obj.id;
     }
 
     @ValidateParams
     testFn2(n: number, @IsValidInstance obj: TestClass1) {
-        return true;
+        return obj.id;
     }
 
     @ValidateParams
@@ -31,14 +35,14 @@ class TestFixture {
         @GreaterThan(0) n: number,
         @IsValidInstance obj2: TestClass2
     ) {
-        return true;
+        return obj2.price;
     }
 
     @ValidateParams
     testFn4(
         @IsInteger @GreaterThan(0) @LessThan(100) n: number
     ) {
-        return true;
+        return n;
     }
 }
 
@@ -53,7 +57,7 @@ describe('@ValidateParams tests', () => {
                 id: 1
             };
             const result = fixture.testFn1(obj);
-            expect(result).toBe(true);
+            expect(result).toBe(obj.id);
         });
 
         it('should fail if provided invalid params',  () => {
@@ -77,7 +81,7 @@ describe('@ValidateParams tests', () => {
                 id: 1
             };
             const result = fixture.testFn2(1, obj);
-            expect(result).toBe(true);
+            expect(result).toBe(obj.id);
         });
 
         it('should fail if provided an invalid param that needs validation', () => {
@@ -101,7 +105,7 @@ describe('@ValidateParams tests', () => {
                 price: 10.1
             };
             const result = fixture.testFn3(2, obj2);
-            expect(result).toBe(true);
+            expect(result).toBe(obj2.price);
         });
 
         it('should fail if just one param is invalid', () => {
@@ -134,8 +138,9 @@ describe('@ValidateParams tests', () => {
     describe('A function with a validations that expects multiple validations', () => {
 
         it('should succeed given a valid param', () => {
-            const result = fixture.testFn4(50);
-            expect(result).toBe(true);
+            const n = 50;
+            const result = fixture.testFn4(n);
+            expect(result).toBe(n);
         });
 
         it('should fail if a param that fails one validation', () => {

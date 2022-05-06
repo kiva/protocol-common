@@ -1,5 +1,5 @@
 import { globalTracer } from 'opentracing';
-import { RequestContext } from './http-context/request.context';
+import { RequestContext } from './http/request.context.js';
 
 const startChild = (ctx: any, name: string) => {
     if (ctx.hasOwnProperty('span')) {

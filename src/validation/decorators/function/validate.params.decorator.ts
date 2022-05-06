@@ -1,10 +1,10 @@
-import { ParamValidation } from '../../common/param.validation';
-import { paramValidationMetadataKey } from '../../common/utility/decorator.utility';
+import { ParamValidation } from '../../common/param.validation.js';
+import { paramValidationMetadataKey } from '../../common/utility/decorator.utility.js';
 import { ClassConstructor } from 'class-transformer';
-import { ParamValidationWithTypeMetadata } from '../../common/param.validation.with.type.metadata';
-import { ParamValidationError } from '../../common/param.validation.error';
-import { throwValidationException } from '../../common/utility/error.utility';
-import { isTypedValidation } from '../../common/utility/common.utility';
+import { ParamValidationWithTypeMetadata } from '../../common/param.validation.with.type.metadata.js';
+import { ParamValidationError } from '../../common/param.validation.error.js';
+import { throwValidationException } from '../../common/utility/error.utility.js';
+import { isTypedValidation } from '../../common/utility/common.utility.js';
 
 
 /**

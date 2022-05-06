@@ -1,5 +1,5 @@
-import { greaterThanBuilder } from '../common/builders/greater.than.builder';
-import { throwValidationException } from '../common/utility/error.utility';
+import { greaterThanBuilder } from '../common/builders/greater.than.builder.js';
+import { throwValidationException } from '../common/utility/error.utility.js';
 
 /**
  * Verify that the provided param is greater than the provided limit. If validation fails, then it will return an array of a single validation error.

@@ -3,9 +3,9 @@
  * For the top level code it only uses the first constraint or the first child
  */
 import { ValidationError } from 'class-validator';
-import { ParamValidationError } from '../param.validation.error';
-import { ProtocolException } from '../../../protocol.exception';
-import { ProtocolErrorCode } from '../../../protocol.errorcode';
+import { ParamValidationError } from '../param.validation.error.js';
+import { ProtocolException } from '../../../protocol.exception.js';
+import { ProtocolErrorCode } from '../../../protocol.errorcode.js';
 
 
 const convertErrorResult = (result: ValidationError | ParamValidationError | any): any => {

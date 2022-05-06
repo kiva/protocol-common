@@ -1,9 +1,9 @@
 import { ClassConstructor, plainToClass } from 'class-transformer';
-import { ParamValidation } from '../param.validation';
-import { ParamValidationError } from '../param.validation.error';
+import { ParamValidation } from '../param.validation.js';
+import { ParamValidationError } from '../param.validation.error.js';
 import { validateSync } from 'class-validator';
-import { formatErrors } from '../utility/error.utility';
-import { NonEmptyArray } from '../../../non.empty.array';
+import { formatErrors } from '../utility/error.utility.js';
+import { NonEmptyArray } from '../../../non.empty.array.js';
 
 /**
  * Returns a function that can be used to validate that the provided param is a valid instance of one of the provided paramType. If you know there

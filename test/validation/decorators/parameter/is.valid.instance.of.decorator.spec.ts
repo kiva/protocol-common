@@ -1,7 +1,11 @@
+/* eslint-disable import/extensions */
+/**
+ * Disabling import/extensions because this runs against typescript
+ */
 import { IsDate, IsInt, Length, Min } from 'class-validator';
-import { ValidateParams } from '../../../../src/validation/decorators/function/validate.params.decorator';
-import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode';
-import { IsValidInstanceOf } from '../../../../src/validation/decorators/parameter/is.valid.instance.of.decorator';
+import { ValidateParams } from '../../../../dist/validation/decorators/function/validate.params.decorator.js';
+import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode.js';
+import { IsValidInstanceOf } from '../../../../dist/validation/decorators/parameter/is.valid.instance.of.decorator.js';
 
 class TestClass1 {
     @IsInt() id: number;
@@ -17,12 +21,16 @@ class TestFixture {
 
     @ValidateParams
     testFn1(@IsValidInstanceOf(TestClass1) obj: TestClass1) {
-        return true;
+        return obj.id;
     }
 
     @ValidateParams
     testFn2(@IsValidInstanceOf(TestClass1, TestClass2) obj: TestClass1 | TestClass2) {
-        return true;
+        if (obj instanceof TestClass1) {
+            return obj.id;
+        } else {
+            return obj.n;
+        }
     }
 }
 
@@ -38,7 +46,7 @@ describe('@IsValidInstanceOf decorators tests', () => {
                 name: 'foobar'
             };
             const result = fixture.testFn1(obj);
-            expect(result).toBe(true);
+            expect(result).toBe(obj.id);
         });
 
         it('should succeed given valid fields of a properly typed object', () => {
@@ -46,7 +54,7 @@ describe('@IsValidInstanceOf decorators tests', () => {
             obj.id = 1;
             obj.name = 'foobar';
             const result = fixture.testFn1(obj);
-            expect(result).toBe(true);
+            expect(result).toBe(obj.id);
         });
 
         it('should fail if provided an instance with one invalid field',  () => {
@@ -93,9 +101,9 @@ describe('@IsValidInstanceOf decorators tests', () => {
             obj2.n = 11;
 
             const result1 = fixture.testFn2(obj1);
-            expect(result1).toBe(true);
+            expect(result1).toBe(obj1.id);
             const result2 = fixture.testFn2(obj2);
-            expect(result2).toBe(true);
+            expect(result2).toBe(obj2.n);
         });
 
         it('should fail if provided an instance that is not valid for any of multiple classes', () => {

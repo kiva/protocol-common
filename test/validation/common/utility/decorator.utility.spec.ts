@@ -1,7 +1,11 @@
-import { buildParamValidationDecorator } from '../../../../src/validation/common/utility/decorator.utility';
-import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode';
-import { ValidateParams } from '../../../../src/validation/decorators/function/validate.params.decorator';
-import { buildParamValidation } from '../../../../src/validation/common/utility/builder.utility';
+/* eslint-disable import/extensions */
+/**
+ * Disabling import/extensions because this runs against typescript
+ */
+import { buildParamValidationDecorator } from '../../../../dist/validation/common/utility/decorator.utility.js';
+import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode.js';
+import { ValidateParams } from '../../../../dist/validation/decorators/function/validate.params.decorator.js';
+import { buildParamValidation } from '../../../../dist/validation/common/utility/builder.utility.js';
 
 describe('Decorator utility tests', () => {
 
@@ -15,13 +19,13 @@ describe('Decorator utility tests', () => {
         class MyClass {
             @ValidateParams
             myFunction(@MyDecorator param: string) {
-                return true;
+                return param;
             }
         }
 
         it('should build a decorators that can be used to mark a validations for validation', () => {
             const instance = new MyClass();
-            expect(instance.myFunction(successInput)).toBe(true);
+            expect(instance.myFunction(successInput)).toBe(successInput);
             try {
                 instance.myFunction(failureInput);
                 fail('Expected a ValidationException error to be thrown');

@@ -1,5 +1,5 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
-import { RequestContextMiddleware } from './request.context.middleware';
+import { RequestContextMiddleware } from './request.context.middleware.js';
 import { HttpModule } from '@nestjs/axios';
 
 /**

@@ -1,5 +1,5 @@
-import { ParamValidation } from '../param.validation';
-import { ParamValidationError } from '../param.validation.error';
+import { ParamValidation } from '../param.validation.js';
+import { ParamValidationError } from '../param.validation.error.js';
 
 /**
  * Given a boolean validation function, build a ParamValidation that will return an error object if the function fails.

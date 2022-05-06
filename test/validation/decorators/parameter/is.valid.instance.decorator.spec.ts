@@ -1,7 +1,11 @@
+/* eslint-disable import/extensions */
+/**
+ * Disabling import/extensions because this runs against typescript
+ */
 import { IsInt, Length } from 'class-validator';
-import { ValidateParams } from '../../../../src/validation/decorators/function/validate.params.decorator';
-import { IsValidInstance } from '../../../../src/validation/decorators/parameter/is.valid.instance.decorator';
-import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode';
+import { ValidateParams } from '../../../../dist/validation/decorators/function/validate.params.decorator.js';
+import { IsValidInstance } from '../../../../dist/validation/decorators/parameter/is.valid.instance.decorator.js';
+import { ProtocolErrorCode } from '../../../../dist/protocol.errorcode.js';
 
 class TestClass1 {
     @IsInt() id: number;
@@ -11,7 +15,7 @@ class TestClass1 {
 class TestFixture {
     @ValidateParams
     testFn1(@IsValidInstance obj: TestClass1) {
-        return true;
+        return obj.id;
     }
 }
 
@@ -25,7 +29,7 @@ describe('@IsValidInstance decorators tests', () => {
             name: 'foobar'
         };
         const result = fixture.testFn1(obj);
-        expect(result).toBe(true);
+        expect(result).toBe(obj.id);
     });
 
     it('should succeed given valid fields of a properly typed object', () => {
@@ -33,7 +37,7 @@ describe('@IsValidInstance decorators tests', () => {
         obj.id = 1;
         obj.name = 'foobar';
         const result = fixture.testFn1(obj);
-        expect(result).toBe(true);
+        expect(result).toBe(obj.id);
     });
 
     it('should fail if provided an instance with one invalid field',  () => {

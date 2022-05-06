@@ -1,7 +1,6 @@
-import { Injectable, NestInterceptor, ExecutionContext, CallHandler, Inject } from '@nestjs/common';
+import { Injectable, NestInterceptor, ExecutionContext, CallHandler, Inject, Logger } from '@nestjs/common';
 import { Observable } from 'rxjs';
-import { Logger } from './logger';
-import { HttpConstants } from './http-context/http.constants';
+import { HttpConstants } from './http/http.constants.js';
 import { Reflector } from '@nestjs/core';
 
 /**

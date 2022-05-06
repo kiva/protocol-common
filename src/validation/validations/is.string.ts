@@ -1,5 +1,5 @@
-import { isStringBuilder } from '../common/builders/is.string.builder';
-import { throwValidationException } from '../common/utility/error.utility';
+import { isStringBuilder } from '../common/builders/is.string.builder.js';
+import { throwValidationException } from '../common/utility/error.utility.js';
 
 /**
  * Validate that the provided param is indeed a string. If validation fails, then it will return an array of a single validation error.

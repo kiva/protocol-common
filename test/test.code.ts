@@ -1,6 +1,9 @@
-import { Logger } from '../src/logger';
-import { Controller, Get, Injectable, Post, Req, Request } from '@nestjs/common';
-import { Trace } from '../src/trace.decorator';
+/* eslint-disable import/extensions */
+/**
+ * Disabling import/extensions because this runs against typescript
+ */
+import { Controller, Get, Injectable, Logger, Post } from '@nestjs/common';
+import { Trace } from '../dist/trace.decorator.js';
 
 export class TestCode {
     @Trace
@@ -31,13 +34,13 @@ export class TestController {
 
     @Post('/noNestedCall')
     @Trace
-    public async noNestedPostCall(@Req() req: Request) : Promise<any> {
+    public async noNestedPostCall() : Promise<any> {
         return 'completed';
     }
 
     @Post('/nestedCall')
     @Trace
-    public async nestedPostCall(@Req() req: Request) : Promise<any> {
+    public async nestedPostCall() : Promise<any> {
         return 'completed';
     }
 }

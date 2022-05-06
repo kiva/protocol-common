@@ -1,5 +1,5 @@
-import { ParamValidation } from '../param.validation';
-import { ParamValidationWithTypeMetadata } from '../param.validation.with.type.metadata';
+import { ParamValidation } from '../param.validation.js';
+import { ParamValidationWithTypeMetadata } from '../param.validation.with.type.metadata.js';
 
 /**
  * Given a base name (probably the name of a function), generate a string that can be used to look up validations on that key.

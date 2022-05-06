@@ -1,5 +1,5 @@
-import { ProtocolException } from './protocol.exception';
-import { ProtocolErrorCode } from './protocol.errorcode';
+import { ProtocolException } from './protocol.exception.js';
+import { ProtocolErrorCode } from './protocol.errorcode.js';
 
 /**
  * Generic, commonly reused functions

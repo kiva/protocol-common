@@ -1,6 +1,7 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import * as cls from 'cls-hooked';
-import { RequestContext } from './request.context';
+import { RequestContext } from './request.context.js';
+import { Request, Response } from 'express';
 
 /**
  * The middleware for setting request context related information.

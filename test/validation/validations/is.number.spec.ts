@@ -1,5 +1,9 @@
-import { isNumber, isNumberOrFail } from '../../../src/validation/validations/is.number';
-import { ProtocolErrorCode } from '../../../dist/protocol.errorcode';
+/* eslint-disable import/extensions */
+/**
+ * Disabling import/extensions because this runs against typescript
+ */
+import { isNumber, isNumberOrFail } from '../../../dist/validation/validations/is.number.js';
+import { ProtocolErrorCode } from '../../../dist/protocol.errorcode.js';
 
 describe('isNumber & isNumberOrFail tests', () => {
     it('should succeed given a valid value', () => {

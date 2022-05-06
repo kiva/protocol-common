@@ -1,5 +1,9 @@
-import { ProtocolErrorCode } from '../../../dist/protocol.errorcode';
-import { lessThan, lessThanOrFail } from '../../../src/validation/validations/less.than';
+/* eslint-disable import/extensions */
+/**
+ * Disabling import/extensions because this runs against typescript
+ */
+import { ProtocolErrorCode } from '../../../dist/protocol.errorcode.js';
+import { lessThan, lessThanOrFail } from '../../../dist/validation/validations/less.than.js';
 
 describe('lessThan & lessThanOrFail tests', () => {
 

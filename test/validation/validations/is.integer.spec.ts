@@ -1,5 +1,9 @@
-import { isInteger, isIntegerOrFail } from '../../../src/validation/validations/is.integer';
-import { ProtocolErrorCode } from '../../../dist/protocol.errorcode';
+/* eslint-disable import/extensions */
+/**
+ * Disabling import/extensions because this runs against typescript
+ */
+import { isInteger, isIntegerOrFail } from '../../../dist/validation/validations/is.integer.js';
+import { ProtocolErrorCode } from '../../../dist/protocol.errorcode.js';
 
 describe('isInteger & isIntegerOrFail tests', () => {
 

@@ -1,5 +1,5 @@
-import { ParamValidation } from '../param.validation';
-import { buildParamValidation } from '../utility/builder.utility';
+import { ParamValidation } from '../param.validation.js';
+import { buildParamValidation } from '../utility/builder.utility.js';
 import { isNumber } from 'class-validator';
 
 const errorMessageFun = (param: any) => `${param as string} was not a number`;

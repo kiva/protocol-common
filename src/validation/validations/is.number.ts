@@ -1,5 +1,5 @@
-import { throwValidationException } from '../common/utility/error.utility';
-import { isNumberBuilder } from '../common/builders/is.number.builder';
+import { throwValidationException } from '../common/utility/error.utility.js';
+import { isNumberBuilder } from '../common/builders/is.number.builder.js';
 
 /**
  * Validate that the provided param is indeed a number. If validation fails, then it will return an array of a single validation error.

@@ -1,6 +1,6 @@
 import { ClassConstructor } from 'class-transformer';
-import { isValidInstanceBuilder } from '../common/builders/is.valid.instance.builder';
-import { throwValidationException } from '../common/utility/error.utility';
+import { isValidInstanceBuilder } from '../common/builders/is.valid.instance.builder.js';
+import { throwValidationException } from '../common/utility/error.utility.js';
 
 /**
  * Verify that the provided parameter is a valid instance of the provided type. It will also check any class-validation property validations that are

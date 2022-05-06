@@ -1,5 +1,5 @@
-import { ParamValidationWithTypeMetadata } from '../param.validation.with.type.metadata';
-import { isValidInstanceOfBuilder } from './is.valid.instance.of.builder';
+import { ParamValidationWithTypeMetadata } from '../param.validation.with.type.metadata.js';
+import { isValidInstanceOfBuilder } from './is.valid.instance.of.builder.js';
 import { ClassConstructor } from 'class-transformer';
 
 /**

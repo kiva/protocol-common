@@ -1,5 +1,9 @@
-import { ParamValidationError } from '../../../../src/validation/common/param.validation.error';
-import { buildParamValidation } from '../../../../src/validation/common/utility/builder.utility';
+/* eslint-disable import/extensions */
+/**
+ * Disabling import/extensions because this runs against typescript
+ */
+import { ParamValidationError } from '../../../../dist/validation/common/param.validation.error.js';
+import { buildParamValidation } from '../../../../dist/validation/common/utility/builder.utility.js';
 
 describe('Builder utility tests', () => {
 

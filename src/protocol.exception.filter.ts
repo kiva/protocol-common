@@ -1,9 +1,8 @@
-import { ExceptionFilter, Catch, ArgumentsHost, HttpException, HttpStatus, InternalServerErrorException } from '@nestjs/common';
+import { ExceptionFilter, Catch, ArgumentsHost, HttpException, HttpStatus, InternalServerErrorException, Logger } from '@nestjs/common';
 import { Response, Request } from 'express';
-import { ProtocolException } from './protocol.exception';
-import { Logger } from './logger';
-import { ProtocolErrorCode } from './protocol.errorcode';
-import { HttpConstants } from './http-context/http.constants';
+import { ProtocolException } from './protocol.exception.js';
+import { ProtocolErrorCode } from './protocol.errorcode.js';
+import { HttpConstants } from './http/http.constants.js';
 
 /**
  * Standardizes error responses from the API
@@ -20,7 +19,7 @@ export class ProtocolExceptionFilter implements ExceptionFilter {
         const ctx = host.switchToHttp();
         const response = ctx.getResponse<Response>();
         const request = ctx.getRequest<Request>();
-        const url = `${request.method as string} ${request.url as string}`;
+        const url = `${request.method} ${request.url}`;
         let status: number;
         const logObject: any = {
             reqid: request.headers[HttpConstants.REQUEST_ID_HEADER],

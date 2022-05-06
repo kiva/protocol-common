@@ -1,9 +1,9 @@
 {
   "name": "protocol-common",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Common code for kiva protocol webservices",
   "license": "Apache-2.0",
-  "type": "commonjs",
+  "type": "module",
   "homepage": "https://github.com/kiva/protocol-common#readme",
   "repository": {
     "type": "git",
@@ -17,8 +17,10 @@
     "hyperledger"
   ],
   "author": "protocol-services",
-  "main": "dist/main.js",
-  "types": "main.d.ts",
+  "exports": {
+    ".": "./index.js",
+    "./validation": "./validation/index.js"
+  },
   "files": [
     "*"
   ],
@@ -26,42 +28,48 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "build": "rm -rf dist && tsc",
-    "build:simple": "tsc",
+    "build": "rm -rf dist && npm run build:js && npm run build:dts && cp package.json dist/",
+    "build:js": "tsc",
+    "build:dts": "dts-bundle-generator --config dts.json",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "node -r dotenv/config node_modules/.bin/jest --runInBand",
-    "setup": "npm run build && cp package.json dist/ && cd dist && npm link && cd ..",
+    "setup": "npm run build && cd dist && npm link && cd ..",
     "teardown": "cd dist && npm unlink && cd .."
   },
   "dependencies": {
-    "@nestjs/axios": "^0.0.3",
+    "@nestjs/axios": "^0.0.7",
     "@nestjs/common": "^8.2.0",
     "@nestjs/core": "^8.2.0",
     "@nestjs/platform-express": "^8.2.0",
-    "axios": "^0.24.0",
+    "axios": "^0.26.0",
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",
     "cls-hooked": "^4.2.2",
     "crypto-js": "^4.1.1",
     "crypto-random-string": "^4.0.0",
-    "dd-trace": "^1.5.1",
+    "dd-trace": "^2.5.0",
     "dotenv": "^10.0.0",
     "express-opentracing": "^0.1.1",
     "jaeger-client": "^3.19.0",
+    "nestjs-pino": "^2.5.2",
     "opentracing": "^0.14.5",
+    "pino": "^7.11.0",
+    "pino-pretty": "^7.6.1",
+    "pino-http": "^7.0.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.4.0",
-    "typescript": "^4.4.4",
-    "winston": "^3.3.3"
+    "typescript": "^4.4.4"
   },
   "devDependencies": {
     "@nestjs/testing": "^8.2.0",
+    "@types/express": "^4.17.13",
     "@types/jest": "^27.0.2",
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^5.17.0",
     "@typescript-eslint/eslint-plugin-tslint": "^5.17.0",
     "@typescript-eslint/parser": "^5.17.0",
+    "dts-bundle-generator": "^6.9.0",
     "eslint": "^8.12.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jsdoc": "^38.1.4",
