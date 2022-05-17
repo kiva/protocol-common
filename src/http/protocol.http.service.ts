@@ -2,14 +2,15 @@ import { HttpService } from '@nestjs/axios';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { ProtocolException } from '../protocol.exception.js';
 import { ProtocolErrorCode } from '../protocol.errorcode.js';
-import { Observable } from 'rxjs';
+import { lastValueFrom, Observable } from 'rxjs';
 import { RequestContext } from './request.context.js';
-import { Logger } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 
 /**
  * This is a wrapper around the default nestjs http service which handles retry logic and error handling
  * All http calls should go through here and not through http service directly
  */
+@Injectable()
 export class ProtocolHttpService {
 
     private retryCount: number;
@@ -28,7 +29,7 @@ export class ProtocolHttpService {
         config.headers = RequestContext.withTraceHeaders(config.headers || {});
 
         if (retryCount <= 0) {
-            return await this.http.request(config).toPromise();
+            return await lastValueFrom(this.http.request(config));
         }
         return await this.httpWithRetry(this.http.request(config), retryCount, exponentialDelay);
     }
