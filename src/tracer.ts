@@ -140,23 +140,21 @@ export const traceware = (serviceName: string) => {
 
 /**
  * Taken from 'express-opentracing' which appears to no longer be maintained and has incorrectly updated itself for ESM libraries.
- *
- * @param options
  */
 const middleware = (options: any = {}) => {
     const tracer = options.tracer || opentracing.globalTracer();
 
     return (req, res, next) => {
         const wireCtx = tracer.extract(opentracing.FORMAT_HTTP_HEADERS, req.headers);
-        const url = new URL(req.url, `http://${req.headers.host}`);
+        const url = new URL(req.url, `http://${req.headers.host as string}`);
         const pathname = url.pathname;
         const span = tracer.startSpan(req.url, {childOf: wireCtx});
-        span.logEvent("request_received");
+        span.logEvent('request_received');
 
         // include some useful tags on the trace
-        span.setTag("http.method", req.method);
-        span.setTag("span.kind", "server");
-        span.setTag("http.url", req.url);
+        span.setTag('http.method', req.method);
+        span.setTag('span.kind', 'server');
+        span.setTag('http.url', req.url);
 
         // include trace ID in headers so that we can debug slow requests we see in
         // the browser by looking up the trace ID found in response headers
@@ -169,15 +167,15 @@ const middleware = (options: any = {}) => {
 
         // finalize the span when the response is completed
         const finishSpan = () => {
-            span.logEvent("request_finished");
+            span.logEvent('request_finished');
             // Route matching often happens after the middleware is run. Try changing the operation name
             // to the route matcher.
             const opName = (req.route && req.route.path) || pathname;
             span.setOperationName(opName);
-            span.setTag("http.status_code", res.statusCode);
+            span.setTag('http.status_code', res.statusCode);
             if (res.statusCode >= 500) {
-                span.setTag("error", true);
-                span.setTag("sampling.priority", 1);
+                span.setTag('error', true);
+                span.setTag('sampling.priority', 1);
             }
             span.finish();
         };
@@ -186,4 +184,4 @@ const middleware = (options: any = {}) => {
 
         next();
     };
-}
+};
