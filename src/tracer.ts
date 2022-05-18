@@ -1,7 +1,7 @@
 import { initGlobalTracer } from 'opentracing';
 import jaeger from 'jaeger-client';
 import ddTrace from 'dd-trace';
-import middleware from 'express-opentracing';
+import expressOpenTracing from 'express-opentracing';
 import { Logger } from '@nestjs/common';
 
 /**
@@ -135,6 +135,6 @@ export const traceware = (serviceName: string) => {
           return next();
         }
         // trace calls
-        middleware({tracer})(req, res, next);
+        expressOpenTracing.default({tracer})(req, res, next);
       };
 };
