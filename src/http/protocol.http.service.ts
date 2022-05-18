@@ -21,6 +21,10 @@ export class ProtocolHttpService {
         this.exponentialDelay = parseInt(process.env.RESTFUL_CLIENT_DELAY, 10) || 250;
     }
 
+    public async requestWithoutRetry(config: AxiosRequestConfig): Promise<any> {
+        return await lastValueFrom(this.http.request(config));
+    }
+
     public async requestWithRetry(config: AxiosRequestConfig, retryCount?: number, exponentialDelay?: number): Promise<any> {
         retryCount = retryCount || this.retryCount;
         exponentialDelay = exponentialDelay || this.exponentialDelay;
