@@ -1,8 +1,7 @@
-import { initGlobalTracer } from 'opentracing';
 import jaeger from 'jaeger-client';
 import ddTrace from 'dd-trace';
-import middleware from 'express-opentracing';
 import { Logger } from '@nestjs/common';
+import * as opentracing from 'opentracing';
 
 /**
  * tracer
@@ -46,7 +45,7 @@ const initJaegerTracer = (serviceName: string) => {
         },
     };
     const tracer = jaeger.initTracerFromEnv(config, options);
-    initGlobalTracer(tracer);
+    opentracing.initGlobalTracer(tracer);
     return tracer;
 };
 
@@ -72,7 +71,7 @@ const initDatadogTracer = (serviceName: string) => {
             error: err => Logger.error(err.toString()),
         },
     });
-    initGlobalTracer(tracer);
+    opentracing.initGlobalTracer(tracer);
     return tracer;
 };
 
@@ -137,4 +136,52 @@ export const traceware = (serviceName: string) => {
         // trace calls
         middleware({tracer})(req, res, next);
       };
+};
+
+/**
+ * Taken from 'express-opentracing' which appears to no longer be maintained and has incorrectly updated itself for ESM libraries.
+ */
+const middleware = (options: any = {}) => {
+    const tracer = options.tracer || opentracing.globalTracer();
+
+    return (req, res, next) => {
+        const wireCtx = tracer.extract(opentracing.FORMAT_HTTP_HEADERS, req.headers);
+        const url = new URL(req.url, `http://${req.headers.host as string}`);
+        const pathname = url.pathname;
+        const span = tracer.startSpan(req.url, {childOf: wireCtx});
+        span.logEvent('request_received');
+
+        // include some useful tags on the trace
+        span.setTag('http.method', req.method);
+        span.setTag('span.kind', 'server');
+        span.setTag('http.url', req.url);
+
+        // include trace ID in headers so that we can debug slow requests we see in
+        // the browser by looking up the trace ID found in response headers
+        const responseHeaders = {};
+        tracer.inject(span, opentracing.FORMAT_TEXT_MAP, responseHeaders);
+        Object.keys(responseHeaders).forEach(key => res.setHeader(key, responseHeaders[key]));
+
+        // add the span to the request object for handlers to use
+        Object.assign(req, {span});
+
+        // finalize the span when the response is completed
+        const finishSpan = () => {
+            span.logEvent('request_finished');
+            // Route matching often happens after the middleware is run. Try changing the operation name
+            // to the route matcher.
+            const opName = (req.route && req.route.path) || pathname;
+            span.setOperationName(opName);
+            span.setTag('http.status_code', res.statusCode);
+            if (res.statusCode >= 500) {
+                span.setTag('error', true);
+                span.setTag('sampling.priority', 1);
+            }
+            span.finish();
+        };
+        res.on('close', finishSpan);
+        res.on('finish', finishSpan);
+
+        next();
+    };
 };

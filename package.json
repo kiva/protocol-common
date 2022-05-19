@@ -1,6 +1,6 @@
 {
   "name": "protocol-common",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Common code for kiva protocol webservices",
   "license": "Apache-2.0",
   "type": "module",
@@ -51,7 +51,6 @@
     "crypto-random-string": "^4.0.0",
     "dd-trace": "^2.5.0",
     "dotenv": "^10.0.0",
-    "express-opentracing": "^0.1.1",
     "jaeger-client": "^3.19.0",
     "nestjs-pino": "^2.5.2",
     "opentracing": "^0.14.5",
