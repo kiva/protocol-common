@@ -26,6 +26,35 @@ to your `.eslint.json` configuration file:
 ]
 ```
 
+### Jest + ESM
+
+Because our package is now exported as an ESModule, there may be some new and weird error messages you see if you use
+Jest for running unit tests in your own TypeScript application. Fear not! Here's how you can support ESM imports with
+TypeScript in Jest.
+
+1. If you have not already, install the `ts-jest` package as a dev dependency.
+```
+npm install --save-dev ts-jest
+```
+2. Add the following to your Jest configuration:
+```
+"globals": {
+    "ts-jest": {
+        "useESM": true
+    }
+},
+"extensionsToTreatAsEsm": [
+    ".ts"
+]
+```
+3. Be sure to add the `--experimental-vm-modules` flag to your Node environment prior to running Jest. You can read
+   [more about ESM support in Jest here](https://jestjs.io/docs/ecmascript-modules).
+```
+"scripts": {
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest"
+}
+```
+
 ## Minimum node version supported is node 16.
 
 In particular, this is true if you are importing any `.json` files in your application. If you are doing so, you need to
