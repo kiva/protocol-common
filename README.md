@@ -10,17 +10,11 @@ npm package for your work.
 
 If you'd like to use a local version of protocol-common instead of the version available through npm packages, we've
 added some handy scripts to help you do so.
-1. In protocol-common, run the command `npm run setup`
-    - This will compile your code into a dist/ directory and use the [npm link](https://docs.npmjs.com/cli/v8/commands/npm-link)
-      utility to create a local symlink to that dist/ directory.
-2. In the project that will use protocol-common, run the command `npm link protocol-common`.
+1. In protocol-common, run the command `npm run build:pack`
+    - This will compile your code into a dist/ directory and create a `.tgz` installable binary of protocol-common.
+    - Note the path to the `.tgz`, this will be important for the next step!
+2. In the project that will use protocol-common, run the command `npm install <path to .tgz>`.
 3. Try it out!
-
-When you're finished, run the following commands in order to undo the local link:
-1. In the project that is using protocol-common, run the command `npm unlink protocol-common --no-save`
-    - Note that now you will not have any protocol-common dependency installed, so you may want to pull down the remote
-      version again by running `npm install`.
-2. In protocol-common, run the command `npm run teardown`
 
 # Contributing to protocol-common
 
@@ -69,3 +63,8 @@ To use the ConfigModule, data needs to be passed in.  The data needs to be a spe
      "prod": {}
    }
 ```
+
+# Migrating from 0.x.x to 1.x.x
+
+Looking to use the latest version of protocol-common, but currently using an older version? See
+[this doc](/docs/migrate.to.v1.md) for migration instructions.

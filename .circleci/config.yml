@@ -2,22 +2,10 @@ version: 2.1
 orbs:
   node: circleci/node@4.1.0
 jobs:
-  build-and-test16:
+  build-test-deploy:
     executor:
       name: node/default
       tag: '16.14.2'
-    steps:
-      - checkout
-      - run: npm install
-      - run: npm run build
-      - run: npm run lint
-      - run: npm test
-      - run: node --version
-
-  build-and-test:
-    executor:
-      name: node/default
-      tag: '14.15.1'
     steps:
       - checkout
       - run: npm install
@@ -29,10 +17,8 @@ jobs:
           if [ "$CIRCLE_BRANCH" == "main" ] && [ "$CD_SKIP" != "1" ]; then
               ./publish.sh
           fi
+
 workflows:
     build-and-test:
       jobs:
-        - build-and-test16
-        - build-and-test:
-            requires:
-              - build-and-test16
+        - build-test-deploy
