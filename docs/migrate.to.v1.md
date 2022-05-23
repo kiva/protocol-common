@@ -3,9 +3,9 @@
 There are several significant changes from 0.x.x to 1.x.x:
 * Breaking: Protocol-Common is now published as an ESModule library.
 * Breaking: Minimum node version supported is node 16.
-* Breaking: The underlying logging mechanism has been swapped out for Pino logger.
+* Breaking: The underlying logging mechanism (Winston) has been swapped out for Pino logger.
 * Breaking: Protocol-Common now provides shallow-imports and does not support deep imports.
-* Clients no longer need to keep a @nest/axios dependency in sync with Protocol-Common's version.
+* Breaking: New ProtocolHttpService implementation.
 
 ## Protocol-Common is now published as an ESModule library.
 
@@ -84,7 +84,7 @@ import { ProtocolValidationPipe } from 'protocol-common/validation/protocol.vali
 import { ProtocolValidationPipe } from 'protocol-common/validation'; // THIS IS GOOD!
 ```
 
-## Clients no longer need to keep a @nest/axios dependency in sync with Protocol-Common's version.
+## New ProtocolHttpService implementation.
 
 1. Delete any dependency on `@nestjs/axios` from your `package.json`
 2. Anywhere you were importing `HttpModule` from `@nestjs/axios` or `@nestjs/common`, now import `ProtocolHttpModule`
