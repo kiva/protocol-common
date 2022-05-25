@@ -15,7 +15,7 @@ This has a few downstream effects for clients of Protocol-Common. Most important
    external sources (e.g. modules imported from npm).
 
 To make sure that this behavior is enforced in future updates to the codebase, we recommend adding the following rule
-to your `.eslint.json` configuration file:
+to your `.eslintrc.json` configuration file:
 ```
 "import/extensions": [
     "error",
@@ -57,6 +57,18 @@ npm install --save-dev ts-jest
 
 ## Minimum node version supported is node 16.
 
+### Using --experimental-json-module flag
+
+We are using some experimental flags in node 16.  When running services, include `--experimental-json-modules` flag in the start command.
+
+EG:
+```
+npm run build && node -r dotenv/config --experimental-json-modules dist/app.js
+```
+
+
+### JSON resources
+
 In particular, this is true if you are importing any `.json` files in your application. If you are doing so, you need to
 add an assertion to your import line. This will likely cause a typescript error, so you'll also need to use a @ts-ignore
 flag. E.g.
@@ -70,7 +82,7 @@ See the documentation here for more information: [https://nodejs.org/docs/latest
 
 ### Getting an eslint error now?
 
-Add this rule to your `.eslint.json` file:
+Add this rule to your `.eslintrc.json` file:
 
 ```
 "@typescript-eslint/ban-ts-comment": [
