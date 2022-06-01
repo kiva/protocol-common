@@ -24,6 +24,10 @@ export class ProtocolLogger extends BaseLogger {
         super.log(newMessage, ...optionalParams);
     }
 
+    info(message: any, ...optionalParams: any[]) {
+        this.log(message, ...optionalParams);
+    }
+
     warn(message: any, ...optionalParams: any[]) {
         const newMessage = this.truncateMessage(message);
         super.warn(newMessage, ...optionalParams);
